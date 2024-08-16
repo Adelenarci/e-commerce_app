@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../build/E-Ticaret_Uygulaması.props" />
+</Project>

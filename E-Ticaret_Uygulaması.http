@@ -1,0 +1,6 @@
+@E_Ticaret_Uygulaması_HostAddress = http://localhost:5163
+
+GET {{E_Ticaret_Uygulaması_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
