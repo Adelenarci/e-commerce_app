@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/akk/Desktop/Smartpro Proje /E-Ticaret_Uygulaması/E-Ticaret_Uygulaması.csproj": {}
+    "/Users/akk/Desktop/e-commerce_app/E-Ticaret_Uygulaması.csproj": {}
   },
   "projects": {
-    "/Users/akk/Desktop/Smartpro Proje /E-Ticaret_Uygulaması/E-Ticaret_Uygulaması.csproj": {
+    "/Users/akk/Desktop/e-commerce_app/E-Ticaret_Uygulaması.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/akk/Desktop/Smartpro Proje /E-Ticaret_Uygulaması/E-Ticaret_Uygulaması.csproj",
+        "projectUniqueName": "/Users/akk/Desktop/e-commerce_app/E-Ticaret_Uygulaması.csproj",
         "projectName": "E-Ticaret_Uygulaması",
-        "projectPath": "/Users/akk/Desktop/Smartpro Proje /E-Ticaret_Uygulaması/E-Ticaret_Uygulaması.csproj",
+        "projectPath": "/Users/akk/Desktop/e-commerce_app/E-Ticaret_Uygulaması.csproj",
         "packagesPath": "/Users/akk/.nuget/packages/",
-        "outputPath": "/Users/akk/Desktop/Smartpro Proje /E-Ticaret_Uygulaması/obj/",
+        "outputPath": "/Users/akk/Desktop/e-commerce_app/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/akk/.nuget/NuGet/NuGet.Config"
