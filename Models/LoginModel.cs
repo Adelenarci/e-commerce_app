@@ -1,4 +1,4 @@
-namespace YourNamespace.Models
+namespace E_Ticaret_Uygulaması.Models;
 {
     public class LoginModel
     {

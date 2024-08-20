@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace E_Ticaret_Uygulaması.Models;
+namespace E_Ticaret_Uygulaması.Models
+{
 
 public partial class User
 {
@@ -14,4 +15,5 @@ public partial class User
     public string? Email { get; set; }
 
     public string? Rol { get; set; }
+}
 }

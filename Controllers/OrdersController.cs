@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 [Route("api/[controller]")]
 public class OrdersController : ControllerBase
 {
-    private readonly ApplicationDbContext _context;
+    private readonly SmartprodatabaseContext _context;
 
-    public OrdersController(ApplicationDbContext context)
+    public OrdersController(SmartprodatabaseContext context)
     {
         _context = context;
     }

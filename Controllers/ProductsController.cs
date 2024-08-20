@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 [Route("api/[controller]")]
 public class ProductsController : ControllerBase
 {
-    private readonly ApplicationDbContext _context;
+    private readonly SmartprodatabaseContext _context;
 
-    public ProductsController(ApplicationDbContext context)
+    public ProductsController(SmartprodatabaseContext context)
     {
         _context = context;
     }

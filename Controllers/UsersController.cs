@@ -8,9 +8,9 @@ using YourNamespace.Models;
 [Route("api/[controller]")]
 public class UsersController : ControllerBase
 {
-    private readonly ApplicationDbContext _context;
+    private readonly SmartprodatabaseContext _context;
 
-    public UsersController(ApplicationDbContext context)
+    public UsersController(SmartprodatabaseContext context)
     {
         _context = context;
     }

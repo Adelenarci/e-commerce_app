@@ -2,14 +2,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
+using E_Ticaret_Uygulaması.Models;
 
 [ApiController]
 [Route("api/[controller]")]
 public class AdminController : ControllerBase
 {
-    private readonly ApplicationDbContext _context;
+    private readonly SmartprodatabaseContext _context;
 
-    public AdminController(ApplicationDbContext context)
+    public AdminController(SmartprodatabaseContext context)
     {
         _context = context;
     }
