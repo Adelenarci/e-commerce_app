@@ -1,50 +1,62 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
+using E_Ticaret_Uygulaması.Models;
 
-[ApiController]
-[Route("api/[controller]")]
-public class ProductsController : ControllerBase
+namespace E_Ticaret_Uygulaması.Controllers
 {
-    private readonly SmartprodatabaseContext _context;
-
-    public ProductsController(SmartprodatabaseContext context)
+    [ApiController]
+    [Route("api/[controller]")]
+    public class ProductsController : ControllerBase
     {
-        _context = context;
-    }
+        private readonly SmartprodatabaseContext _context;
 
-    // GET: api/Products
-    // Tüm ürünleri listele
-    [HttpGet]
-    public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
-    {
-        return await _context.Products.ToListAsync();
-    }
-
-    // GET: api/Products/5
-    // Belirli bir ürünü ID'sine göre getir
-    [HttpGet("{id}")]
-    public async Task<ActionResult<Product>> GetProduct(int id)
-    {
-        var product = await _context.Products.FindAsync(id);
-
-        if (product == null)
+        public ProductsController(SmartprodatabaseContext context)
         {
-            return NotFound();
+            _context = context;
         }
 
-        return product;
-    }
+        // GET: api/Products
+        // Tüm ürünleri listele
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
+        {
+            try
+            {
+                return await _context.Products.ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                // Log the exception (ex) here as needed
+                return StatusCode(500, "Internal server error");
+            }
+        }
 
-    // GET: api/Products/search?name=productName
-    // Ürün arama (isim ile)
-    [HttpGet("search")]
-    public async Task<ActionResult<IEnumerable<Product>>> SearchProducts(string name)
-    {
-        return await _context.Products
-            .Where(p => p.İsim.Contains(name))
-            .ToListAsync();
+        // GET: api/Products/5
+        // Belirli bir ürünü ID'sine göre getir
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Product>> GetProduct(int id)
+        {
+            var product = await _context.Products.FindAsync(id);
+
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            return product;
+        }
+
+        // GET: api/Products/search?name=productName
+        // Ürün arama (isim ile)
+        [HttpGet("search")]
+        public async Task<ActionResult<IEnumerable<Product>>> SearchProducts(string name)
+        {
+            return await _context.Products
+                .Where(p => p.İsim.Contains(name))
+                .ToListAsync();
+        }
     }
 }

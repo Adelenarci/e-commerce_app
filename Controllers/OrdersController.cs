@@ -1,103 +1,116 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using E_Ticaret_Uygulaması.Models;
 
-[ApiController]
-[Route("api/[controller]")]
-public class OrdersController : ControllerBase
+namespace E_Ticaret_Uygulaması.Controllers
 {
-    private readonly SmartprodatabaseContext _context;
-
-    public OrdersController(SmartprodatabaseContext context)
+    [ApiController]
+    [Route("api/[controller]")]
+    public class OrdersController : ControllerBase
     {
-        _context = context;
-    }
+        private readonly SmartprodatabaseContext _context;
 
-    // GET: api/Orders
-    // Tüm siparişleri listele
-    [HttpGet]
-    public async Task<ActionResult<IEnumerable<Order>>> GetOrders()
-    {
-        return await _context.Orders.ToListAsync();
-    }
-
-    // GET: api/Orders/5
-    // Belirli bir siparişi ID'sine göre getir
-    [HttpGet("{id}")]
-    public async Task<ActionResult<Order>> GetOrder(int id)
-    {
-        var order = await _context.Orders.FindAsync(id);
-
-        if (order == null)
+        public OrdersController(SmartprodatabaseContext context)
         {
-            return NotFound();
+            _context = context;
         }
 
-        return order;
-    }
-
-    // POST: api/Orders
-    // Yeni bir sipariş oluştur
-    [HttpPost]
-    public async Task<ActionResult<Order>> PostOrder(Order order)
-    {
-        _context.Orders.Add(order);
-        await _context.SaveChangesAsync();
-
-        return CreatedAtAction(nameof(GetOrder), new { id = order.SiparişID }, order);
-    }
-
-    // PUT: api/Orders/5
-    // Mevcut bir siparişi güncelle
-    [HttpPut("{id}")]
-    public async Task<IActionResult> PutOrder(int id, Order order)
-    {
-        if (id != order.SiparişID)
+        // GET: api/Orders
+        // Tüm siparişleri listele
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Order>>> GetOrders()
         {
-            return BadRequest();
+            try
+            {
+                return await _context.Orders.ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                // Log the exception (ex) here as needed
+                return StatusCode(500, "Internal server error");
+            }
         }
 
-        _context.Entry(order).State = EntityState.Modified;
+        // GET: api/Orders/5
+        // Belirli bir siparişi ID'sine göre getir
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Order>> GetOrder(int id)
+        {
+            var order = await _context.Orders.FindAsync(id);
 
-        try
-        {
-            await _context.SaveChangesAsync();
-        }
-        catch (DbUpdateConcurrencyException)
-        {
-            if (!OrderExists(id))
+            if (order == null)
             {
                 return NotFound();
             }
-            else
-            {
-                throw;
-            }
+
+            return order;
         }
 
-        return NoContent();
-    }
-
-    // DELETE: api/Orders/5
-    // Mevcut bir siparişi sil
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteOrder(int id)
-    {
-        var order = await _context.Orders.FindAsync(id);
-        if (order == null)
+        // POST: api/Orders
+        // Yeni bir sipariş oluştur
+        [HttpPost]
+        public async Task<ActionResult<Order>> PostOrder(Order order)
         {
-            return NotFound();
+            _context.Orders.Add(order);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(GetOrder), new { id = order.SiparişId }, order);
         }
 
-        _context.Orders.Remove(order);
-        await _context.SaveChangesAsync();
+        // PUT: api/Orders/5
+        // Mevcut bir siparişi güncelle
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutOrder(int id, Order order)
+        {
+            if (id != order.SiparişId)
+            {
+                return BadRequest();
+            }
 
-        return NoContent();
-    }
+            _context.Entry(order).State = EntityState.Modified;
 
-    private bool OrderExists(int id)
-    {
-        return _context.Orders.Any(e => e.SiparişID == id);
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!OrderExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
+        // DELETE: api/Orders/5
+        // Mevcut bir siparişi sil
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteOrder(int id)
+        {
+            var order = await _context.Orders.FindAsync(id);
+            if (order == null)
+            {
+                return NotFound();
+            }
+
+            _context.Orders.Remove(order);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+        private bool OrderExists(int id)
+        {
+            return _context.Orders.Any(e => e.SiparişId == id);
+        }
     }
 }
