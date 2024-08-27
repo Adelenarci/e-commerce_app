@@ -1,0 +1,1828 @@
+.ecommerce-desktop {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    background-color: #ffffff;
+  }
+  
+  .ecommerce-desktop .desktop-shop-header {
+    position: relative;
+    width: 1440px;
+    height: 852px;
+    background-color: #f9f9f9;
+  }
+  
+  .ecommerce-desktop .overlap {
+    position: relative;
+    height: 852px;
+  }
+  
+  .ecommerce-desktop .background {
+    position: absolute;
+    width: 1440px;
+    height: 747px;
+    top: 0;
+    left: 0;
+    background-image: url(../Assets/img/hero-cover-2.jpg);
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+  
+  .ecommerce-desktop .filter {
+    height: 747px;
+    background-color: #00000080;
+  }
+  
+  .ecommerce-desktop .navbar-style {
+    position: absolute;
+    width: 1439px;
+    height: 136px;
+    top: 0;
+    left: 0;
+    background-color: #ffffff;
+  }
+  
+  .ecommerce-desktop .navbar-dark {
+    position: absolute;
+    width: 1439px;
+    height: 58px;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+  }
+  
+  .ecommerce-desktop .navbar-light {
+    position: absolute;
+    width: 1437px;
+    height: 58px;
+    top: 70px;
+    left: 0;
+  }
+  
+  .ecommerce-desktop .carousel {
+    position: absolute;
+    width: 1439px;
+    height: 716px;
+    top: 136px;
+    left: 1px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    border: 1px solid;
+    border-color: #dedede;
+  }
+  
+  .ecommerce-desktop .overlap-group {
+    position: relative;
+    height: 716px;
+  }
+  
+  .ecommerce-desktop .carousel-inner {
+    position: absolute;
+    width: 1439px;
+    height: 716px;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+  }
+  
+  .ecommerce-desktop .carousel-item {
+    width: 1440px;
+    height: 716px;
+  }
+  
+  .ecommerce-desktop .container-wrapper {
+    width: 1439px;
+    height: 716px;
+    background-image: url(../Assets/img/shop-hero-1-product-slide-1.jpg);
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+  
+  .ecommerce-desktop .container {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 80px;
+    padding: 112px 0px;
+    position: relative;
+    top: 48px;
+    left: 198px;
+  }
+  
+  .ecommerce-desktop .row {
+    display: inline-flex;
+    align-items: center;
+    gap: 30px;
+    padding: 48px 0px;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  .ecommerce-desktop .col-md {
+    display: flex;
+    flex-direction: column;
+    width: 599px;
+    align-items: flex-start;
+    gap: 35px;
+    position: relative;
+  }
+  
+  .ecommerce-desktop .h {
+    width: fit-content;
+    font-family: "Montserrat-Bold", Helvetica;
+    font-weight: 700;
+    color: #ffffff;
+    font-size: 16px;
+    letter-spacing: 0.1px;
+    line-height: 24px;
+    white-space: nowrap;
+    position: relative;
+    margin-top: -1px;
+  }
+  
+  .ecommerce-desktop .headline {
+    width: fit-content;
+    color: #ffffff;
+    font-size: var(--h-1-font-size);
+    line-height: var(--h-1-line-height);
+    white-space: nowrap;
+    position: relative;
+    font-family: var(--h-1-font-family);
+    font-weight: var(--h-1-font-weight);
+    letter-spacing: var(--h-1-letter-spacing);
+    font-style: var(--h-1-font-style);
+  }
+  
+  .ecommerce-desktop .text-wrapper {
+    width: fit-content;
+    color: var(--light-text-gray-1);
+    font-size: 20px;
+    line-height: 30px;
+    position: relative;
+    font-family: "Montserrat-Regular", Helvetica;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+  }
+  
+  .ecommerce-desktop .cta {
+    all: unset;
+    box-sizing: border-box;
+    align-items: flex-start;
+    gap: 10px;
+    display: inline-flex;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  .ecommerce-desktop .button-btn-primary {
+    background-color: var(--success-color);
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 40px;
+    position: relative;
+    flex: 0 0 auto;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  
+  .ecommerce-desktop .div {
+    position: relative;
+    width: fit-content;
+    margin-top: -1px;
+    font-family: "Montserrat-Bold", Helvetica;
+    font-weight: 700;
+    color: #ffffff;
+    font-size: 24px;
+    text-align: center;
+    letter-spacing: 0.1px;
+    line-height: 32px;
+    white-space: nowrap;
+  }
+  
+  .ecommerce-desktop .col-md-2 {
+    position: relative;
+    width: 415px;
+  }
+  
+  .ecommerce-desktop .carousel-indicators {
+    position: absolute;
+    width: 126px;
+    height: 10px;
+    top: 657px;
+    left: 657px;
+  }
+  
+  .ecommerce-desktop .carousel-captions {
+    position: absolute;
+    width: 62px;
+    height: 10px;
+    top: 0;
+    left: 0;
+    background-color: #ffffff;
+  }
+  
+  .ecommerce-desktop .carousel-captions-2 {
+    position: absolute;
+    width: 63px;
+    height: 10px;
+    top: 0;
+    left: 63px;
+    background-color: #ffffff;
+    opacity: 0.5;
+  }
+  
+  .ecommerce-desktop .carousel-control {
+    left: 1381px;
+    position: absolute;
+    width: 24px;
+    height: 44px;
+    top: 283px;
+  }
+  
+  .ecommerce-desktop .img {
+    left: 40px;
+    position: absolute;
+    width: 24px;
+    height: 44px;
+    top: 283px;
+  }
+  
+  .ecommerce-desktop .desktop-shop-cards {
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    height: 770px;
+    background-color: #f9f9f9;
+  }
+  
+  .ecommerce-desktop .container-2 {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+    padding: 80px 0px;
+    position: relative;
+    left: 195px;
+  }
+  
+  .ecommerce-desktop .main-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 607px;
+    align-items: center;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  .ecommerce-desktop .main-content {
+    display: flex;
+    flex-direction: column;
+    width: 607px;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  .ecommerce-desktop .feature-section {
+    position: relative;
+    width: fit-content;
+    margin-top: -1px;
+    font-family: var(--h-3-font-family);
+    font-weight: var(--h-3-font-weight);
+    color: #252b42;
+    font-size: var(--h-3-font-size);
+    letter-spacing: var(--h-3-letter-spacing);
+    line-height: var(--h-3-line-height);
+    white-space: nowrap;
+    font-style: var(--h-3-font-style);
+  }
+  
+  .ecommerce-desktop .paragraph {
+    white-space: nowrap;
+    position: relative;
+    width: fit-content;
+    font-family: "Montserrat-Regular", Helvetica;
+    font-weight: 400;
+    color: #727272;
+    font-size: 14px;
+    text-align: center;
+    letter-spacing: 0.2px;
+    line-height: 20px;
+  }
+  
+  .ecommerce-desktop .row-2 {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 30px;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  .ecommerce-desktop .div-2 {
+    position: relative;
+    width: 510px;
+    height: 500px;
+  }
+  
+  .ecommerce-desktop .card-item {
+    height: 500px;
+    background-color: #ffffff;
+  }
+  
+  .ecommerce-desktop .media-bg-cover {
+    position: absolute;
+    width: 510px;
+    height: 500px;
+    top: 0;
+    left: 0;
+    background-image: url(../Assets/img/card-cover-20.jpg);
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+  
+  .ecommerce-desktop .filter-2 {
+    position: relative;
+    width: 509px;
+    height: 500px;
+    left: 1px;
+    background-image: url(../Assets/img/filter-4.svg);
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+  
+  .ecommerce-desktop .card-content {
+    position: absolute;
+    width: 170px;
+    height: 48px;
+    top: 426px;
+    left: 31px;
+    background-color: #ffffff;
+  }
+  
+  .ecommerce-desktop .h-2 {
+    position: absolute;
+    top: 11px;
+    left: 64px;
+    font-family: var(--h-5-font-family);
+    font-weight: var(--h-5-font-weight);
+    color: #252b42;
+    font-size: var(--h-5-font-size);
+    text-align: center;
+    letter-spacing: var(--h-5-letter-spacing);
+    line-height: var(--h-5-line-height);
+    white-space: nowrap;
+    font-style: var(--h-5-font-style);
+  }
+  
+  .ecommerce-desktop .div-3 {
+    position: relative;
+    width: 240px;
+    height: 500px;
+  }
+  
+  .ecommerce-desktop .filter-wrapper {
+    height: 500px;
+    background-image: url(../Assets/img/card-cover-21.jpg);
+    position: absolute;
+    width: 240px;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+  
+  .ecommerce-desktop .filter-3 {
+    position: relative;
+    width: 239px;
+    height: 500px;
+    left: 1px;
+    background-image: url(../Assets/img/filter-3.svg);
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+  
+  .ecommerce-desktop .h-wrapper {
+    width: 136px;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 48px;
+    top: 434px;
+    left: 21px;
+    display: flex;
+    gap: 10px;
+    position: absolute;
+    background-color: #ffffff;
+  }
+  
+  .ecommerce-desktop .h-3 {
+    position: relative;
+    width: fit-content;
+    margin-top: -1px;
+    margin-left: -14.5px;
+    margin-right: -14.5px;
+    font-family: var(--h-5-font-family);
+    font-weight: var(--h-5-font-weight);
+    color: #252b42;
+    font-size: var(--h-5-font-size);
+    text-align: center;
+    letter-spacing: var(--h-5-letter-spacing);
+    line-height: var(--h-5-line-height);
+    white-space: nowrap;
+    font-style: var(--h-5-font-style);
+  }
+  
+  .ecommerce-desktop .col-md-3 {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  .ecommerce-desktop .overlap-group-wrapper {
+    position: relative;
+    width: 240px;
+    height: 242px;
+    background-color: #ffffff;
+  }
+  
+  .ecommerce-desktop .overlap-group-2 {
+    position: relative;
+    height: 242px;
+  }
+  
+  .ecommerce-desktop .div-wrapper {
+    height: 242px;
+    background-image: url(../Assets/img/card-cover-22.jpg);
+    position: absolute;
+    width: 240px;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+  
+  .ecommerce-desktop .filter-4 {
+    position: relative;
+    width: 239px;
+    height: 242px;
+    left: 1px;
+    background-image: url(../Assets/img/filter.svg);
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+  
+  .ecommerce-desktop .card-content-2 {
+    width: 170px;
+    align-items: flex-start;
+    padding: 12px 26px;
+    top: 171px;
+    left: 14px;
+    display: flex;
+    gap: 10px;
+    position: absolute;
+    background-color: #ffffff;
+  }
+  
+  .ecommerce-desktop .h-4 {
+    position: relative;
+    width: fit-content;
+    margin-top: -1px;
+    font-family: var(--h-5-font-family);
+    font-weight: var(--h-5-font-weight);
+    color: #252b42;
+    font-size: var(--h-5-font-size);
+    text-align: center;
+    letter-spacing: var(--h-5-letter-spacing);
+    line-height: var(--h-5-line-height);
+    white-space: nowrap;
+    font-style: var(--h-5-font-style);
+  }
+  
+  .ecommerce-desktop .media-bg-cover-2 {
+    height: 242px;
+    background-image: url(../Assets/img/card-cover-23.jpg);
+    position: absolute;
+    width: 240px;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+  
+  .ecommerce-desktop .filter-5 {
+    position: relative;
+    width: 239px;
+    height: 242px;
+    left: 1px;
+    background-image: url(../Assets/img/filter-2.svg);
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+  
+  .ecommerce-desktop .card-content-3 {
+    width: 120px;
+    align-items: flex-start;
+    padding: 12px 40px;
+    top: 176px;
+    left: 18px;
+    display: flex;
+    gap: 10px;
+    position: absolute;
+    background-color: #ffffff;
+  }
+  
+  .ecommerce-desktop .desktop-product {
+    position: relative;
+    width: 1440px;
+    height: 1652px;
+    background-color: #ffffff;
+  }
+  
+  .ecommerce-desktop .container-3 {
+    display: flex;
+    flex-direction: column;
+    width: 1124px;
+    align-items: center;
+    gap: 80px;
+    padding: 80px 0px;
+    position: relative;
+    left: 195px;
+  }
+  
+  .ecommerce-desktop .row-3 {
+    display: flex;
+    flex-direction: column;
+    width: 692px;
+    align-items: center;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  .ecommerce-desktop .main-content-2 {
+    display: flex;
+    flex-direction: column;
+    width: 691px;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  .ecommerce-desktop .section-title {
+    position: relative;
+    width: fit-content;
+    margin-top: -1px;
+    font-family: "Montserrat-Regular", Helvetica;
+    font-weight: 400;
+    color: #727272;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0.2px;
+    line-height: 30px;
+    white-space: nowrap;
+  }
+  
+  .ecommerce-desktop .h-section-title {
+    position: relative;
+    width: fit-content;
+    font-family: "Montserrat-Bold", Helvetica;
+    font-weight: 700;
+    color: #252b42;
+    font-size: 24px;
+    text-align: center;
+    letter-spacing: 0.1px;
+    line-height: 32px;
+    white-space: nowrap;
+  }
+  
+  .ecommerce-desktop .product-card-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 238px;
+    align-items: center;
+    position: relative;
+  }
+  
+  .ecommerce-desktop .product-card {
+    display: flex;
+    flex-direction: column;
+    width: 239px;
+    align-items: flex-start;
+    margin-left: -0.5px;
+    margin-right: -0.5px;
+    background-color: #ffffff;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  .ecommerce-desktop .fixed-height {
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    height: 427px;
+    background-image: url(../Assets/img/product-cover-5-2.png);
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+  
+  .ecommerce-desktop .frame {
+    flex-direction: column;
+    gap: 10px;
+    padding: 25px 25px 35px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    flex: 0 0 auto;
+  }
+  
+  .ecommerce-desktop .product-title {
+    position: relative;
+    width: 131px;
+    margin-top: -1px;
+    font-family: "Montserrat-Bold", Helvetica;
+    font-weight: 700;
+    color: #252b42;
+    font-size: 16px;
+    text-align: center;
+    letter-spacing: 0.1px;
+    line-height: 24px;
+  }
+  
+  .ecommerce-desktop .link-product {
+    position: relative;
+    width: fit-content;
+    font-family: var(--link-font-family);
+    font-weight: var(--link-font-weight);
+    color: #727272;
+    font-size: var(--link-font-size);
+    text-align: center;
+    letter-spacing: var(--link-letter-spacing);
+    line-height: var(--link-line-height);
+    white-space: nowrap;
+    font-style: var(--link-font-style);
+  }
+  
+  .ecommerce-desktop .prices {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 5px;
+    padding: 5px 3px;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  .ecommerce-desktop .price {
+    width: 52px;
+    font-family: "Montserrat-Bold", Helvetica;
+    font-weight: 700;
+    color: var(--muted-color);
+    font-size: 16px;
+    text-align: center;
+    letter-spacing: 0.1px;
+    line-height: 24px;
+    position: relative;
+    margin-top: -1px;
+  }
+  
+  .ecommerce-desktop .h-price {
+    width: 45px;
+    margin-top: -1px;
+    color: var(--secondary-color-1);
+    font-size: 16px;
+    line-height: 24px;
+    position: relative;
+    font-family: "Montserrat-Bold", Helvetica;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 0.1px;
+  }
+  
+  .ecommerce-desktop .product-colors {
+    display: inline-flex;
+    align-items: center;
+    gap: 6.08px;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  .ecommerce-desktop .ellipse {
+    background-color: #23a6f0;
+    position: relative;
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+  }
+  
+  .ecommerce-desktop .ellipse-2 {
+    background-color: var(--secondary-color-1);
+    position: relative;
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+  }
+  
+  .ecommerce-desktop .ellipse-3 {
+    background-color: var(--alert-color);
+    position: relative;
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+  }
+  
+  .ecommerce-desktop .ellipse-4 {
+    background-color: var(--dark-background-color);
+    position: relative;
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+  }
+  
+  .ecommerce-desktop .col-md-4 {
+    display: flex;
+    flex-direction: column;
+    width: 241px;
+    align-items: center;
+    position: relative;
+  }
+  
+  .ecommerce-desktop .product-card-2 {
+    display: flex;
+    flex-direction: column;
+    width: 239px;
+    align-items: flex-start;
+    position: relative;
+    flex: 0 0 auto;
+    background-color: #ffffff;
+  }
+  
+  .ecommerce-desktop .fixed-height-2 {
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    height: 427px;
+    background-image: url(../Assets/img/product-cover-5-4.png);
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+  
+  .ecommerce-desktop .col-md-5 {
+    display: flex;
+    flex-direction: column;
+    width: 240px;
+    align-items: center;
+    position: relative;
+  }
+  
+  .ecommerce-desktop .fixed-height-3 {
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    height: 427px;
+    background-image: url(./img/product-cover-5-3.png);
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+  
+  .ecommerce-desktop .fixed-height-4 {
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    height: 427px;
+    background-image: url(../Assets/img/product-cover-5-5.png);
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+  
+  .ecommerce-desktop .fixed-height-5 {
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    height: 427px;
+    background-image: url(../Assets/img/product-cover-5.png);
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+  
+  .ecommerce-desktop .fixed-height-6 {
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    height: 427px;
+    background-image: url(../Assets/img/image.png);
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+  
+  .ecommerce-desktop .fixed-height-7 {
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    height: 427px;
+    background-image: url(../Assets/img/product-cover-5-6.png);
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+  
+  .ecommerce-desktop .fixed-height-8 {
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    height: 427px;
+    background-image: url(../Assets/img/product-cover-5-7.png);
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+  
+  .ecommerce-desktop .overlap-wrapper {
+    position: relative;
+    width: 1440px;
+    height: 709px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    border: 1px solid;
+    border-color: #dedede;
+  }
+  
+  .ecommerce-desktop .overlap-2 {
+    position: relative;
+    height: 709px;
+  }
+  
+  .ecommerce-desktop .carousel-item-wrapper {
+    position: absolute;
+    width: 1440px;
+    height: 709px;
+    top: 0;
+    left: 0;
+  }
+  
+  .ecommerce-desktop .carousel-item-2 {
+    height: 709px;
+    overflow: hidden;
+    background-image: url(../Assets/img/shop-hero-2-product-slide-2.jpg);
+    background-size: 100% 100%;
+  }
+  
+  .ecommerce-desktop .row-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 1036px;
+    height: 711px;
+    align-items: flex-start;
+    gap: 80px;
+    padding: 112px 0px;
+    position: relative;
+    left: 209px;
+    overflow: hidden;
+  }
+  
+  .ecommerce-desktop .row-4 {
+    display: inline-flex;
+    height: 599px;
+    align-items: flex-start;
+    gap: 30px;
+    position: relative;
+    margin-bottom: -112px;
+    margin-right: -13px;
+    overflow: hidden;
+  }
+  
+  .ecommerce-desktop .col-md-6 {
+    display: flex;
+    flex-direction: column;
+    width: 509px;
+    align-items: flex-start;
+    gap: 30px;
+    padding: 60px 0px 0px;
+    position: relative;
+  }
+  
+  .ecommerce-desktop .h-5 {
+    width: fit-content;
+    font-family: "Montserrat-Regular", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 20px;
+    letter-spacing: 0.2px;
+    line-height: 30px;
+    white-space: nowrap;
+    position: relative;
+    margin-top: -1px;
+  }
+  
+  .ecommerce-desktop .h-headline {
+    width: 509px;
+    color: #ffffff;
+    font-size: var(--h-1-font-size);
+    line-height: var(--h-1-line-height);
+    position: relative;
+    font-family: var(--h-1-font-family);
+    font-weight: var(--h-1-font-weight);
+    letter-spacing: var(--h-1-letter-spacing);
+    font-style: var(--h-1-font-style);
+  }
+  
+  .ecommerce-desktop .p {
+    width: 341px;
+    color: #ffffff;
+    font-size: 14px;
+    line-height: 20px;
+    position: relative;
+    font-family: "Montserrat-Regular", Helvetica;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+  }
+  
+  .ecommerce-desktop .CTA {
+    align-items: center;
+    gap: 34px;
+    display: inline-flex;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  .ecommerce-desktop .price-2 {
+    width: fit-content;
+    color: #ffffff;
+    font-size: 24px;
+    line-height: 32px;
+    white-space: nowrap;
+    position: relative;
+    font-family: "Montserrat-Bold", Helvetica;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 0.1px;
+  }
+  
+  .ecommerce-desktop .button-md {
+    all: unset;
+    box-sizing: border-box;
+    background-color: var(--success-color);
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 40px;
+    position: relative;
+    flex: 0 0 auto;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  
+  .ecommerce-desktop .btn-text {
+    all: unset;
+    box-sizing: border-box;
+    position: relative;
+    width: fit-content;
+    margin-top: -1px;
+    font-family: "Montserrat-Bold", Helvetica;
+    font-weight: 700;
+    color: var(--light-text-color);
+    font-size: 14px;
+    text-align: center;
+    letter-spacing: 0.2px;
+    line-height: 22px;
+    white-space: nowrap;
+  }
+  
+  .ecommerce-desktop .shop-hero-png-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 510px;
+    align-items: center;
+    position: relative;
+    margin-bottom: -86px;
+  }
+  
+  .ecommerce-desktop .shop-hero-png {
+    position: relative;
+    width: 443px;
+    height: 597px;
+    object-fit: cover;
+  }
+  
+  .ecommerce-desktop .carousel-indicators-2 {
+    position: absolute;
+    width: 126px;
+    height: 10px;
+    top: 650px;
+    left: 657px;
+  }
+  
+  .ecommerce-desktop .carousel-control-2 {
+    position: absolute;
+    width: 24px;
+    height: 44px;
+    top: 401px;
+    left: 1381px;
+  }
+  
+  .ecommerce-desktop .carousel-control-3 {
+    position: absolute;
+    width: 24px;
+    height: 44px;
+    top: 401px;
+    left: 40px;
+  }
+  
+  .ecommerce-desktop .container-fluid {
+    position: relative;
+    width: 1440px;
+    height: 682px;
+    background-color: #ffffff;
+  }
+  
+  .ecommerce-desktop .row-5 {
+    display: flex;
+    width: 1439px;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 30px;
+    position: relative;
+  }
+  
+  .ecommerce-desktop .hero-cover-wrapper {
+    position: relative;
+    width: 704px;
+    height: 682px;
+  }
+  
+  .ecommerce-desktop .hero-cover {
+    height: 682px;
+  }
+  
+  .ecommerce-desktop .none {
+    position: relative;
+    width: 632px;
+    height: 492px;
+    top: 117px;
+    left: 36px;
+  }
+  
+  .ecommerce-desktop .asian-woman-man-with {
+    position: absolute;
+    width: 624px;
+    height: 680px;
+    top: -117px;
+    left: -36px;
+    object-fit: cover;
+  }
+  
+  .ecommerce-desktop .col-md-7 {
+    display: flex;
+    flex-direction: column;
+    width: 573px;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 30px;
+    position: relative;
+  }
+  
+  .ecommerce-desktop .header-tag {
+    position: relative;
+    width: fit-content;
+    margin-top: -1px;
+    font-family: "Montserrat-Bold", Helvetica;
+    font-weight: 700;
+    color: var(--muted-text-color);
+    font-size: 16px;
+    letter-spacing: 0.1px;
+    line-height: 24px;
+    white-space: nowrap;
+  }
+  
+  .ecommerce-desktop .headline-2 {
+    width: fit-content;
+    color: #252b42;
+    font-size: var(--h-2-font-size);
+    line-height: var(--h-2-line-height);
+    position: relative;
+    font-family: var(--h-2-font-family);
+    font-weight: var(--h-2-font-weight);
+    letter-spacing: var(--h-2-letter-spacing);
+    font-style: var(--h-2-font-style);
+  }
+  
+  .ecommerce-desktop .sub-headline {
+    position: relative;
+    width: 376px;
+    font-family: "Montserrat-Regular", Helvetica;
+    font-weight: 400;
+    color: #727272;
+    font-size: 20px;
+    letter-spacing: 0.2px;
+    line-height: 30px;
+  }
+  
+  .ecommerce-desktop .cta-2 {
+    align-items: flex-start;
+    gap: 10px;
+    display: inline-flex;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  .ecommerce-desktop .button {
+    all: unset;
+    box-sizing: border-box;
+    position: relative;
+    width: fit-content;
+    margin-top: -1px;
+    font-family: var(--btn-text-font-family);
+    font-weight: var(--btn-text-font-weight);
+    color: #ffffff;
+    font-size: var(--btn-text-font-size);
+    text-align: center;
+    letter-spacing: var(--btn-text-letter-spacing);
+    line-height: var(--btn-text-line-height);
+    white-space: nowrap;
+    font-style: var(--btn-text-font-style);
+  }
+  
+  .ecommerce-desktop .btn-text-wrapper {
+    all: unset;
+    box-sizing: border-box;
+    border: 1px solid;
+    border-color: var(--success-color);
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 40px;
+    position: relative;
+    flex: 0 0 auto;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  
+  .ecommerce-desktop .btn-text-2 {
+    all: unset;
+    box-sizing: border-box;
+    position: relative;
+    width: fit-content;
+    margin-top: -1px;
+    font-family: var(--btn-text-font-family);
+    font-weight: var(--btn-text-font-weight);
+    color: var(--success-color);
+    font-size: var(--btn-text-font-size);
+    text-align: center;
+    letter-spacing: var(--btn-text-letter-spacing);
+    line-height: var(--btn-text-line-height);
+    white-space: nowrap;
+    font-style: var(--btn-text-font-style);
+  }
+  
+  .ecommerce-desktop .desktop-blog {
+    position: relative;
+    width: 1440px;
+    height: 1044px;
+    background-color: #ffffff;
+  }
+  
+  .ecommerce-desktop .container-4 {
+    display: flex;
+    flex-direction: column;
+    width: 1050px;
+    align-items: center;
+    gap: 80px;
+    padding: 112px 0px;
+    position: relative;
+    left: 195px;
+  }
+  
+  .ecommerce-desktop .section-tag {
+    position: relative;
+    width: fit-content;
+    margin-top: -1px;
+    font-family: "Montserrat-Bold", Helvetica;
+    font-weight: 700;
+    color: #23a6f0;
+    font-size: 14px;
+    text-align: center;
+    letter-spacing: 0.2px;
+    line-height: 24px;
+    white-space: nowrap;
+  }
+  
+  .ecommerce-desktop .section-title-2 {
+    position: relative;
+    width: fit-content;
+    font-family: var(--h-2-font-family);
+    font-weight: var(--h-2-font-weight);
+    color: #252b42;
+    font-size: var(--h-2-font-size);
+    text-align: center;
+    letter-spacing: var(--h-2-letter-spacing);
+    line-height: var(--h-2-line-height);
+    white-space: nowrap;
+    font-style: var(--h-2-font-style);
+  }
+  
+  .ecommerce-desktop .paragraph-2 {
+    position: relative;
+    width: fit-content;
+    font-family: "Montserrat-Regular", Helvetica;
+    font-weight: 400;
+    color: #727272;
+    font-size: 14px;
+    text-align: center;
+    letter-spacing: 0.2px;
+    line-height: 20px;
+  }
+  
+  .ecommerce-desktop .row-6 {
+    display: inline-flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 30px;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  .ecommerce-desktop .content-card-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 328px;
+    align-items: center;
+    position: relative;
+  }
+  
+  .ecommerce-desktop .content-card {
+    display: flex;
+    flex-direction: column;
+    width: 348px;
+    align-items: flex-start;
+    position: relative;
+    flex: 0 0 auto;
+    margin-left: -10px;
+    margin-right: -10px;
+    background-color: var(--light-background-color);
+    box-shadow: var(--light-drop-shadow);
+  }
+  
+  .ecommerce-desktop .tag-wrapper {
+    background-image: url(../Assets/img/unsplash-hhdhcfaifhu.png);
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    height: 300px;
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+  
+  .ecommerce-desktop .tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 0px 10px;
+    position: relative;
+    top: 20px;
+    left: 20px;
+    background-color: var(--danger-color);
+    border-radius: 3px;
+    overflow: hidden;
+    box-shadow: 0px 2px 4px #0000001a;
+  }
+  
+  .ecommerce-desktop .text-wrapper-2 {
+    position: relative;
+    width: fit-content;
+    margin-top: -1px;
+    font-family: "Montserrat-Bold", Helvetica;
+    font-weight: 700;
+    color: var(--light-text-color);
+    font-size: 14px;
+    text-align: center;
+    letter-spacing: 0.2px;
+    line-height: 24px;
+    white-space: nowrap;
+  }
+  
+  .ecommerce-desktop .frame-2 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 25px 25px 35px;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    flex: 0 0 auto;
+  }
+  
+  .ecommerce-desktop .tags {
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  .ecommerce-desktop .small {
+    color: var(--disabled-element-color);
+    position: relative;
+    width: fit-content;
+    margin-top: -1px;
+    font-family: var(--small-font-family);
+    font-weight: var(--small-font-weight);
+    font-size: var(--small-font-size);
+    letter-spacing: var(--small-letter-spacing);
+    line-height: var(--small-line-height);
+    white-space: nowrap;
+    font-style: var(--small-font-style);
+  }
+  
+  .ecommerce-desktop .small-2 {
+    color: #727272;
+    position: relative;
+    width: fit-content;
+    margin-top: -1px;
+    font-family: var(--small-font-family);
+    font-weight: var(--small-font-weight);
+    font-size: var(--small-font-size);
+    letter-spacing: var(--small-letter-spacing);
+    line-height: var(--small-line-height);
+    white-space: nowrap;
+    font-style: var(--small-font-style);
+  }
+  
+  .ecommerce-desktop .post-title {
+    position: relative;
+    width: 247px;
+    font-family: var(--h-4-font-family);
+    font-weight: var(--h-4-font-weight);
+    color: var(--text-color);
+    font-size: var(--h-4-font-size);
+    letter-spacing: var(--h-4-letter-spacing);
+    line-height: var(--h-4-line-height);
+    font-style: var(--h-4-font-style);
+  }
+  
+  .ecommerce-desktop .paragraph-post {
+    position: relative;
+    width: 280px;
+    font-family: var(--paragraph-font-family);
+    font-weight: var(--paragraph-font-weight);
+    color: var(--second-text-color);
+    font-size: var(--paragraph-font-size);
+    letter-spacing: var(--paragraph-letter-spacing);
+    line-height: var(--paragraph-line-height);
+    font-style: var(--paragraph-font-style);
+  }
+  
+  .ecommerce-desktop .frame-3 {
+    justify-content: space-between;
+    padding: 15px 0px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    flex: 0 0 auto;
+  }
+  
+  .ecommerce-desktop .frame-4 {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  .ecommerce-desktop .icon-akar-icons {
+    position: relative;
+    width: 16px;
+    height: 16px;
+    background-image: url(../Assets/img/icon-cool-icon-1-2.svg);
+    background-size: 100% 100%;
+  }
+  
+  .ecommerce-desktop .icon-ant-design-area {
+    position: relative;
+    width: 16px;
+    height: 14.67px;
+  }
+  
+  .ecommerce-desktop .small-3 {
+    color: var(--second-text-color);
+    position: relative;
+    width: fit-content;
+    margin-top: -1px;
+    font-family: var(--small-font-family);
+    font-weight: var(--small-font-weight);
+    font-size: var(--small-font-size);
+    letter-spacing: var(--small-letter-spacing);
+    line-height: var(--small-line-height);
+    white-space: nowrap;
+    font-style: var(--small-font-style);
+  }
+  
+  .ecommerce-desktop .a {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  .ecommerce-desktop .h-6 {
+    position: relative;
+    width: fit-content;
+    margin-top: -1px;
+    font-family: "Montserrat-Bold", Helvetica;
+    font-weight: 700;
+    color: #727272;
+    font-size: 14px;
+    letter-spacing: 0.2px;
+    line-height: 24px;
+    white-space: nowrap;
+  }
+  
+  .ecommerce-desktop .icon-arrow-next {
+    position: relative;
+    width: 9px;
+    height: 16px;
+  }
+  
+  .ecommerce-desktop .fixed-height-9 {
+    background-image: url(../Assets/img/unsplash-tveqstc2uz8.png);
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    height: 300px;
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+  
+  .ecommerce-desktop .col-md-8 {
+    display: flex;
+    flex-direction: column;
+    width: 329px;
+    align-items: center;
+    position: relative;
+  }
+  
+  .ecommerce-desktop .content-card-2 {
+    display: flex;
+    flex-direction: column;
+    width: 348px;
+    align-items: flex-start;
+    position: relative;
+    flex: 0 0 auto;
+    margin-left: -9.5px;
+    margin-right: -9.5px;
+    background-color: var(--light-background-color);
+    box-shadow: var(--light-drop-shadow);
+  }
+  
+  .ecommerce-desktop .fixed-height-10 {
+    background-image: url(../Assets/img/unsplash-degu-ocub1y.png);
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    height: 300px;
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+  
+  .ecommerce-desktop .icon-akar-icons-2 {
+    position: relative;
+    width: 16px;
+    height: 16px;
+    background-image: url(../Assets/img/icon-cool-icon-1.svg);
+    background-size: 100% 100%;
+  }
+  
+  .ecommerce-desktop .desktop-footer {
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    height: 488px;
+    background-color: #ffffff;
+  }
+  
+  .ecommerce-desktop .overlap-3 {
+    position: absolute;
+    width: 1440px;
+    height: 142px;
+    top: 0;
+    left: 0;
+  }
+  
+  .ecommerce-desktop .div-4 {
+    position: absolute;
+    width: 1440px;
+    height: 142px;
+    top: 0;
+    left: 0;
+    background-color: var(--light-gray-1);
+  }
+  
+  .ecommerce-desktop .container-5 {
+    display: flex;
+    flex-direction: column;
+    width: 1050px;
+    align-items: flex-start;
+    padding: 40px 0px;
+    position: relative;
+    left: 195px;
+  }
+  
+  .ecommerce-desktop .row-7 {
+    display: inline-flex;
+    align-items: center;
+    gap: 577.5px;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  .ecommerce-desktop .navbar-brand-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 236px;
+    align-items: flex-start;
+    gap: 10px;
+    position: relative;
+  }
+  
+  .ecommerce-desktop .navbar-brand {
+    position: relative;
+    width: 187px;
+    height: 58px;
+  }
+  
+  .ecommerce-desktop .text-wrapper-3 {
+    position: absolute;
+    top: 12px;
+    left: 0;
+    font-family: var(--h-3-font-family);
+    font-weight: var(--h-3-font-weight);
+    color: #252b42;
+    font-size: var(--h-3-font-size);
+    letter-spacing: var(--h-3-letter-spacing);
+    line-height: var(--h-3-line-height);
+    white-space: nowrap;
+    font-style: var(--h-3-font-style);
+  }
+  
+  .ecommerce-desktop .col-md-9 {
+    position: relative;
+    width: 236px;
+  }
+  
+  .ecommerce-desktop .hr {
+    position: absolute;
+    width: 1057px;
+    height: 1px;
+    top: 137px;
+    left: 195px;
+    object-fit: cover;
+  }
+  
+  .ecommerce-desktop .div-5 {
+    position: absolute;
+    width: 1440px;
+    height: 272px;
+    top: 142px;
+    left: 0;
+    background-color: #ffffff;
+  }
+  
+  .ecommerce-desktop .container-6 {
+    display: flex;
+    flex-direction: column;
+    width: 1050px;
+    align-items: flex-start;
+    padding: 50px 0px;
+    position: relative;
+    left: 195px;
+  }
+  
+  .ecommerce-desktop .col-md-10 {
+    display: flex;
+    flex-direction: column;
+    width: 148px;
+    align-items: flex-start;
+    gap: 20px;
+    position: relative;
+  }
+  
+  .ecommerce-desktop .h-7 {
+    width: fit-content;
+    font-family: var(--h-5-font-family);
+    font-weight: var(--h-5-font-weight);
+    color: #252b42;
+    font-size: var(--h-5-font-size);
+    letter-spacing: var(--h-5-letter-spacing);
+    line-height: var(--h-5-line-height);
+    white-space: nowrap;
+    position: relative;
+    margin-top: -1px;
+    font-style: var(--h-5-font-style);
+  }
+  
+  .ecommerce-desktop .div-6 {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  .ecommerce-desktop .link {
+    margin-top: -1px;
+    position: relative;
+    width: fit-content;
+    font-family: var(--link-font-family);
+    font-weight: var(--link-font-weight);
+    color: #727272;
+    font-size: var(--link-font-size);
+    letter-spacing: var(--link-letter-spacing);
+    line-height: var(--link-line-height);
+    white-space: nowrap;
+    font-style: var(--link-font-style);
+  }
+  
+  .ecommerce-desktop .link-2 {
+    position: relative;
+    width: fit-content;
+    font-family: var(--link-font-family);
+    font-weight: var(--link-font-weight);
+    color: #727272;
+    font-size: var(--link-font-size);
+    letter-spacing: var(--link-letter-spacing);
+    line-height: var(--link-line-height);
+    white-space: nowrap;
+    font-style: var(--link-font-style);
+  }
+  
+  .ecommerce-desktop .col-md-11 {
+    display: flex;
+    flex-direction: column;
+    width: 152px;
+    align-items: flex-start;
+    gap: 20px;
+    position: relative;
+  }
+  
+  .ecommerce-desktop .col-md-12 {
+    display: flex;
+    flex-direction: column;
+    width: 321px;
+    align-items: flex-start;
+    gap: 20px;
+    position: relative;
+  }
+  
+  .ecommerce-desktop .custom-form-group {
+    position: relative;
+    width: 321px;
+    height: 87px;
+  }
+  
+  .ecommerce-desktop .input-group {
+    position: absolute;
+    width: 321px;
+    height: 58px;
+    top: 0;
+    left: 0;
+  }
+  
+  .ecommerce-desktop .overlap-group-3 {
+    position: relative;
+    height: 58px;
+    border-radius: 5px;
+  }
+  
+  .ecommerce-desktop .form-control-input {
+    position: absolute;
+    width: 321px;
+    height: 58px;
+    top: 0;
+    left: 0;
+    background-color: #f8f8f8;
+    border-radius: 5px;
+    overflow: hidden;
+    border: 1px solid;
+    border-color: #e6e6e6;
+  }
+  
+  .ecommerce-desktop .text-wrapper-4 {
+    position: absolute;
+    top: 14px;
+    left: 20px;
+    font-family: "Montserrat-Regular", Helvetica;
+    font-weight: 400;
+    color: #727272;
+    font-size: 14px;
+    letter-spacing: 0.2px;
+    line-height: 28px;
+    white-space: nowrap;
+  }
+  
+  .ecommerce-desktop .input-group-append {
+    all: unset;
+    box-sizing: border-box;
+    position: absolute;
+    width: 117px;
+    height: 58px;
+    top: 0;
+    left: 204px;
+  }
+  
+  .ecommerce-desktop .btn {
+    all: unset;
+    box-sizing: border-box;
+    position: relative;
+    height: 58px;
+    background-color: #23a6f0;
+    border-radius: 0px 5px 5px 0px;
+    overflow: hidden;
+    border: 1px solid;
+    border-color: #e6e6e6;
+  }
+  
+  .ecommerce-desktop .input-group-text {
+    position: absolute;
+    top: 14px;
+    left: 22px;
+    font-family: "Montserrat-Regular", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 14px;
+    text-align: center;
+    letter-spacing: 0.2px;
+    line-height: 28px;
+    white-space: nowrap;
+  }
+  
+  .ecommerce-desktop .form-text {
+    position: absolute;
+    top: 58px;
+    left: 2px;
+    font-family: "Montserrat-Regular", Helvetica;
+    font-weight: 400;
+    color: #727272;
+    font-size: 12px;
+    letter-spacing: 0.2px;
+    line-height: 28px;
+    white-space: nowrap;
+  }
+  
+  .ecommerce-desktop .div-7 {
+    position: absolute;
+    width: 1440px;
+    height: 74px;
+    top: 414px;
+    left: 0;
+    background-color: #f9f9f9;
+  }
+  
+  .ecommerce-desktop .container-7 {
+    display: flex;
+    flex-direction: column;
+    width: 1050px;
+    align-items: flex-start;
+    padding: 25px 0px;
+    position: relative;
+    left: 195px;
+  }
+  
+  .ecommerce-desktop .col-md-wrapper {
+    display: inline-flex;
+    align-items: center;
+    gap: 213px;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  .ecommerce-desktop .col-md-13 {
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    align-items: flex-start;
+    position: relative;
+  }
+  
+  .ecommerce-desktop .text-wrapper-5 {
+    position: relative;
+    width: fit-content;
+    margin-top: -1px;
+    font-family: var(--h-6-font-family);
+    font-weight: var(--h-6-font-weight);
+    color: #727272;
+    font-size: var(--h-6-font-size);
+    letter-spacing: var(--h-6-letter-spacing);
+    line-height: var(--h-6-line-height);
+    white-space: nowrap;
+    font-style: var(--h-6-font-style);
+  }
+  

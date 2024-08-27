@@ -1,0 +1,11 @@
+<svg width="126" height="10" viewBox="0 0 126 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="carousel-indicators" clip-path="url(#clip0_2984_6843)">
+<rect id="carouselCaptions" width="62" height="10" fill="white"/>
+<rect id="carouselCaptions_2" opacity="0.5" x="63" width="63" height="10" fill="white"/>
+</g>
+<defs>
+<clipPath id="clip0_2984_6843">
+<rect width="126" height="10" fill="white"/>
+</clipPath>
+</defs>
+</svg>
