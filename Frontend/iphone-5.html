@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iPhone 5 - My E-Commerce Store</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function addToCart() {
+            const productName = document.getElementById('product-name').innerText;
+            const price = parseFloat(document.getElementById('product-price').innerText.replace('$', ''));
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push({ productName, price });
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(`${productName} has been added to your cart.`);
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>My E-Commerce Store</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="cart.html">Cart</a>
+        </nav>
+    </header>
+    <main>
+        <section class="product-details">
+            <img src="Assets/product 11.webp" alt="iPhone 5">
+            <div class="details">
+                <h2 id="product-name">iPhone 5</h2>
+                <p>Perfect phone.</p>
+                <p><strong>Price:</strong> $<span id="product-price">300.00</span></p>
+                <button onclick="addToCart()" class="btn">Add to Cart</button>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 AKK</p>
+    </footer>
+</body>
+</html>

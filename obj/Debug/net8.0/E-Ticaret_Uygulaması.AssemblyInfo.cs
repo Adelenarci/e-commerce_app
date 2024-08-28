@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("E-Ticaret_Uygulaması")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+14b833e9b07fd158c6cd91c2c9f6d99fa11a2ebd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a565be391b9a037ad5babfa0a5f81580766d3211")]
 [assembly: System.Reflection.AssemblyProductAttribute("E-Ticaret_Uygulaması")]
 [assembly: System.Reflection.AssemblyTitleAttribute("E-Ticaret_Uygulaması")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
