@@ -54,41 +54,29 @@ namespace E_Ticaret_Uygulaması.Controllers
         [HttpPost]
         public async Task<ActionResult<Order>> PostOrder(Order order)
         {
+            // Generate a unique random order ID
+            Random rnd = new Random();
+            int newOrderId;
+            do
+            {
+                newOrderId = rnd.Next(1000, 9999);
+            } while (_context.Orders.Any(o => o.SiparişId == newOrderId));
+
+            order.SiparişId = newOrderId;
+
+            // Set the order date to the current date and time
+            order.SiparişTarihi = DateTime.Now;
+
+            // Ensure the total amount is provided by the client (e.g., from cart.html)
+            if (order.ToplamTutar == null)
+            {
+                return BadRequest("Total amount is required.");
+            }
+
             _context.Orders.Add(order);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction(nameof(GetOrder), new { id = order.SiparişId }, order);
-        }
-
-        // PUT: api/Orders/5
-        // Mevcut bir siparişi güncelle
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutOrder(int id, Order order)
-        {
-            if (id != order.SiparişId)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(order).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!OrderExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
         }
 
         // DELETE: api/Orders/5

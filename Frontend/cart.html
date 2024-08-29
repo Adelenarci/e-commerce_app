@@ -46,6 +46,49 @@
             loadCart();
         }
 
+        function checkout() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const total = parseFloat(document.getElementById('total').innerText);
+
+            if (cart.length === 0) {
+                alert('Your cart is empty.');
+                return;
+            }
+
+            const username = localStorage.getItem('username');
+            const userId = localStorage.getItem('userId'); // Retrieve the user ID from localStorage
+
+            if (!username || !userId) {
+                alert('Please log in to place an order.');
+                return;
+            }
+
+            const order = {
+                KullanıcıId: userId, 
+                ToplamTutar: total
+            };
+
+            fetch('http://localhost:5163/api/Orders', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(order)
+            })
+            .then(response => {
+                if (response.ok) {
+                    clearCart();
+                    alert('Order placed successfully!');
+                } else {
+                    alert('Failed to place order.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error placing order.');
+            });
+        }
+
         window.onload = loadCart;
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -69,7 +112,7 @@
             <div class="total">
                 <p><strong>Total:</strong> $<span id="total">0.00</span></p>
                 <button onclick="clearCart()" class="btn">Clear Cart</button>
-                <button class="btn">Checkout</button>
+                <button onclick="checkout()" class="btn">Checkout</button>
             </div>
         </section>
     </main>

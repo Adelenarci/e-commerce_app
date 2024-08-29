@@ -6,7 +6,7 @@
     <title>User Login - My E-Commerce Store</title>
     <link rel="stylesheet" href="styles.css">
     <script>
-        function loginUser(event) {
+    function loginUser(event) {
     event.preventDefault();
     const username = document.getElementById('login-username').value;
     const password = document.getElementById('login-password').value;
@@ -27,8 +27,19 @@
     .then(data => {
         console.log("Response data:", data);
         if (data.success) {
-            localStorage.setItem('username', username);
-            window.location.href = 'index.html';
+            // After successful login, fetch the KullanıcıId from the backend
+            fetch(`http://localhost:5163/api/Users/GetUserByUsername/${username}`)
+                .then(response => response.json())
+                .then(userData => {
+                    // Store both the username and the user ID in localStorage
+                    localStorage.setItem('username', username);
+                    localStorage.setItem('userId', userData.KullanıcıId); // Assuming the API returns KullanıcıId
+                    window.location.href = 'index.html';
+                })
+                .catch(error => {
+                    console.error('Error fetching user ID:', error);
+                    document.getElementById('loginError').innerText = 'An error occurred. Please try again.';
+                });
         } else {
             document.getElementById('loginError').innerText = 'Invalid username or password';
         }
