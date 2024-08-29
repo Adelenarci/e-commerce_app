@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - My E-Commerce Store</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function loginAdmin(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Call API for admin authentication (for now, it's left empty)
+            fetch('/api/admin-login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username, password })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    localStorage.setItem('username', username); // Store username
+                    localStorage.setItem('role', 'Admin'); // Store admin role
+                    window.location.href = 'admin-dashboard.html'; // Redirect to the admin dashboard
+                } else {
+                    document.getElementById('loginError').innerText = 'Invalid username or password';
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Admin Login</h1>
+    </header>
+    <main>
+        <section class="login">
+            <h2>Admin Login</h2>
+            <form id="loginForm" onsubmit="loginAdmin(event)">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+
+                <button type="submit" class="btn">Login</button>
+            </form>
+            <p id="loginError" class="error"></p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 My E-Commerce Store</p>
+    </footer>
+</body>
+</html>

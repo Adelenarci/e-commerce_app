@@ -11,6 +11,18 @@ builder.Services.AddSwaggerGen();
 // Add services for controllers
 builder.Services.AddControllers();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAllOrigins",
+        builder =>
+        {
+            builder.AllowAnyOrigin()
+                   .AllowAnyMethod()
+                   .AllowAnyHeader();
+        });
+});
+
+
 // Add ApplicationDbContext to DI container
 builder.Services.AddDbContext<SmartprodatabaseContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
@@ -31,5 +43,7 @@ app.UseHttpsRedirection();
 
 // Map controllers to endpoints
 app.MapControllers();
+
+app.UseCors("AllowAllOrigins");
 
 app.Run();

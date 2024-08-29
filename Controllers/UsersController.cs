@@ -18,119 +18,67 @@ namespace E_Ticaret_Uygulaması.Controllers
             _context = context;
         }
 
-        // GET: api/Users
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
+       //Register a new user
+    [HttpPost("register")]
+    public IActionResult RegisterUser([FromBody] User model)
+    {
+        // Check if the username already exists
+        var existingUser = _context.Users.SingleOrDefault(u => u.KullanıcıAdı == model.KullanıcıAdı);
+        if (existingUser != null)
         {
-            try
-            {
-                return await _context.Users.ToListAsync();
-            }
-            catch (Exception ex)
-            {
-                // Log the exception (ex) here as needed
-                return StatusCode(500, "Internal server error");
-            }
+            return BadRequest(new { success = false, message = "Username already exists" });
         }
 
-        // GET: api/Users/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUser(int id)
+        // Get the last KullanıcıID and increment it
+        int newUserId = 1;
+        if (_context.Users.Any())
         {
-            var user = await _context.Users.FindAsync(id);
-
-            if (user == null)
-            {
-                return NotFound();
-            }
-
-            return user;
+            newUserId = _context.Users.Max(u => u.KullanıcıId) + 1;
         }
 
-        // POST: api/Users/register
-        [HttpPost("register")]
-        public async Task<ActionResult<User>> Register(User user)
+        // Create a new user with the next KullanıcıID
+        var user = new User
         {
-            // Password encryption and validation can be added here.
-            _context.Users.Add(user);
-            await _context.SaveChangesAsync();
+            KullanıcıId = newUserId,
+            KullanıcıAdı = model.KullanıcıAdı,
+            Şifre = model.Şifre, // No encryption applied
+            Email = model.Email,
+            Rol = "User" // Set role as 'User'
+        };
 
-            return CreatedAtAction(nameof(GetUser), new { id = user.KullanıcıId }, user);
+        // Save to the database
+        _context.Users.Add(user);
+        _context.SaveChanges();
+
+        return Ok(new { success = true, message = "User created successfully" });
+    }
+
+    // User login
+    [HttpPost("login")]
+    public IActionResult LoginUser([FromBody] User model)
+    {
+        // Find the user by username
+        var user = _context.Users.SingleOrDefault(u => u.KullanıcıAdı == model.KullanıcıAdı);
+        if (user == null)
+        {
+            return BadRequest(new { success = false, message = "Invalid username or password" });
         }
 
-        // POST: api/Users/login
-        [HttpPost("login")]
-        public async Task<ActionResult<User>> Login([FromBody] User loginUser)
+        // Verify the password (plain text comparison)
+        if (user.Şifre != model.Şifre)
         {
-            var user = await _context.Users
-                .FirstOrDefaultAsync(u => u.Email == loginUser.Email && u.Şifre == loginUser.Şifre);
-
-            if (user == null)
-            {
-                return Unauthorized("Invalid login credentials.");
-            }
-
-            // JWT token or session creation can be done here.
-            return Ok(user);
+            return BadRequest(new { success = false, message = "Invalid username or password" });
         }
 
-        // POST: api/Users/logout
-        [HttpPost("logout")]
-        public IActionResult Logout()
-        {
-            // Token or session termination can be done here.
-            return Ok("Logged out successfully.");
-        }
+        return Ok(new { success = true, role = user.Rol, username = user.KullanıcıAdı });
+    }
 
-        // PUT: api/Users/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutUser(int id, User user)
-        {
-            if (id != user.KullanıcıId)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(user).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!UserExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
-        // DELETE: api/Users/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUser(int id)
-        {
-            var user = await _context.Users.FindAsync(id);
-            if (user == null)
-            {
-                return NotFound();
-            }
-
-            _context.Users.Remove(user);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
-
-        private bool UserExists(int id)
-        {
-            return _context.Users.Any(e => e.KullanıcıId == id);
-        }
+    // User logout (simple implementation)
+    [HttpPost("logout")]
+    public IActionResult LogoutUser()
+    {
+        // Perform any necessary logout operations, like token invalidation
+        return Ok(new { success = true, message = "User logged out successfully" });
+    }
     }
 }

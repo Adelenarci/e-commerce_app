@@ -6,6 +6,14 @@
     <title>Cart - My E-Commerce Store</title>
     <link rel="stylesheet" href="styles.css">
     <script>
+        // Script to display username if logged in
+        document.addEventListener('DOMContentLoaded', function() {
+            const username = localStorage.getItem('username');
+            if (username) {
+                document.getElementById('user-login').innerHTML = `<i class="fa fa-user"></i> ${username}`;
+            }
+        });
+
         function loadCart() {
             const cart = JSON.parse(localStorage.getItem('cart')) || [];
             const cartContainer = document.getElementById('cart-items');
@@ -40,6 +48,7 @@
 
         window.onload = loadCart;
     </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
     <header>
@@ -48,6 +57,9 @@
             <a href="index.html">Home</a>
             <a href="products.html">Products</a>
             <a href="cart.html">Cart</a>
+            <button id="user-login" class="btn" onclick="window.location.href='user-login.html'">
+                <i class="fa fa-user"></i> Login
+            </button>
         </nav>
     </header>
     <main>
@@ -62,7 +74,7 @@
         </section>
     </main>
     <footer>
-        <p>&copy; 2024 AKK</p>
+        <p>&copy; 2024 My E-Commerce Store</p>
     </footer>
 </body>
 </html>

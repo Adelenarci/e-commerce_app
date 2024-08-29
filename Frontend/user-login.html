@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Login - My E-Commerce Store</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function loginUser(event) {
+    event.preventDefault();
+    const username = document.getElementById('login-username').value;
+    const password = document.getElementById('login-password').value;
+
+    console.log("Attempting to login with", username, password);
+
+    fetch('http://localhost:5163/api/Users/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ KullanıcıAdı: username, Şifre: password })
+    })
+    .then(response => {
+        console.log("Server response:", response);
+        return response.json();
+    })
+    .then(data => {
+        console.log("Response data:", data);
+        if (data.success) {
+            localStorage.setItem('username', username);
+            window.location.href = 'index.html';
+        } else {
+            document.getElementById('loginError').innerText = 'Invalid username or password';
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        document.getElementById('loginError').innerText = 'An error occurred. Please try again.';
+    });
+}
+
+        function createUser(event) {
+            event.preventDefault();
+            const username = document.getElementById('register-username').value;
+            const password = document.getElementById('register-password').value;
+            const email = document.getElementById('register-email').value;
+
+            // Call API to register a new user
+            fetch('http://localhost:5163/api/Users/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ KullanıcıAdı: username, Şifre: password, Email: email })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Account created successfully. Please log in.');
+                    document.getElementById('loginForm').style.display = 'block';
+                    document.getElementById('registerForm').style.display = 'none';
+                } else {
+                    document.getElementById('registerError').innerText = 'Failed to create account';
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        function showRegisterForm() {
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('registerForm').style.display = 'block';
+        }
+
+        function showLoginForm() {
+            document.getElementById('loginForm').style.display = 'block';
+            document.getElementById('registerForm').style.display = 'none';
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>User Login</h1>
+    </header>
+    <main>
+        <section class="login">
+            <!-- Login Form -->
+            <div id="loginForm">
+                <h2>Login</h2>
+                <form onsubmit="loginUser(event)">
+                    <label for="login-username">Username:</label>
+                    <input type="text" id="login-username" name="username" required>
+
+                    <label for="login-password">Password:</label>
+                    <input type="password" id="login-password" name="password" required>
+
+                    <button type="submit" class="btn">Login</button>
+                </form>
+                <p id="loginError" class="error"></p>
+                <p><a href="#" onclick="showRegisterForm()">Create a new account</a></p>
+                <p><a href="admin-login.html" class="btn-small">Admin Login</a></p>
+            </div>
+
+            <!-- Registration Form -->
+            <div id="registerForm" style="display: none;">
+                <h2>Create Account</h2>
+                <form onsubmit="createUser(event)">
+                    <label for="register-username">Username:</label>
+                    <input type="text" id="register-username" name="username" required>
+
+                    <label for="register-password">Password:</label>
+                    <input type="password" id="register-password" name="password" required>
+
+                    <label for="register-email">Email:</label>
+                    <input type="email" id="register-email" name="email" required>
+
+                    <button type="submit" class="btn">Create Account</button>
+                </form>
+                <p id="registerError" class="error"></p>
+                <p><a href="#" onclick="showLoginForm()">Already have an account? Login here</a></p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 My E-Commerce Store</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!-- header.html -->
+<header>
+    <h1>My E-Commerce Store</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="cart.html">Cart</a>
+        <span id="userLoginReference"></span>
+    </nav>
+</header>
+<script>
+    // This script checks if the user is logged in and updates the login reference accordingly
+    document.addEventListener("DOMContentLoaded", function() {
+        const username = localStorage.getItem('username');
+        const userLoginReference = document.getElementById('userLoginReference');
+
+        if (username) {
+            userLoginReference.innerHTML = `<a href="profile.html">${username}</a> | <a href="#" id="logout">Logout</a>`;
+            document.getElementById('logout').addEventListener('click', function() {
+                localStorage.removeItem('username');
+                window.location.href = 'index.html';
+            });
+        } else {
+            userLoginReference.innerHTML = `<a href="user-login.html">Login</a>`;
+        }
+    });
+</script>
