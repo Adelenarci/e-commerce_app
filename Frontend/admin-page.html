@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - My E-Commerce Store</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function logoutAdmin() {
+            fetch('http://localhost:5163/api/Admin/logout', {
+                method: 'POST'
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.message);
+                localStorage.removeItem('username');
+                localStorage.removeItem('userId');
+                window.location.href = 'index.html'; // Redirect to the home screen
+            })
+            .catch(error => {
+                console.error('Logout Error:', error);
+            });
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Admin Dashboard</h1>
+        <button onclick="logoutAdmin()">Logout</button>
+    </header>
+    <main>
+        <section>
+            <h2>Add New Product</h2>
+            <form id="addProductForm">
+                <input type="text" id="productName" placeholder="Product Name" required>
+                <input type="text" id="productDescription" placeholder="Description" required> <!-- Added Description -->
+                <input type="number" id="productPrice" placeholder="Price" required>
+                <input type="number" id="productStock" placeholder="Stock" required>
+                <button type="submit">Add Product</button>
+            </form>
+        </section>
+        <section>
+            <h2>Update Product</h2>
+            <form id="updateProductForm">
+                <input type="number" id="updateId" placeholder="Product ID" required>
+                <input type="text" id="updateName" placeholder="New Name">
+                <input type="text" id="updateDescription" placeholder="New Description"> <!-- Added Description -->
+                <input type="number" id="updatePrice" placeholder="New Price">
+                <input type="number" id="updateStock" placeholder="New Stock">
+                <button type="submit">Update Product</button>
+            </form>
+        </section>
+        <section>
+            <h2>Delete Product</h2>
+            <form id="deleteProductForm">
+                <input type="number" id="deleteId" placeholder="Product ID" required>
+                <button type="submit">Delete Product</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 My E-Commerce Store</p>
+    </footer>
+    <script src="admin.js"></script>
+</body>
+</html>

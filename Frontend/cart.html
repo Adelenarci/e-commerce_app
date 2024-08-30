@@ -46,48 +46,64 @@
             loadCart();
         }
 
-        function checkout() {
-            const cart = JSON.parse(localStorage.getItem('cart')) || [];
-            const total = parseFloat(document.getElementById('total').innerText);
+    function checkout() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const total = parseFloat(document.getElementById('total').innerText);
 
-            if (cart.length === 0) {
-                alert('Your cart is empty.');
-                return;
-            }
+    if (cart.length === 0) {
+        alert('Your cart is empty.');
+        return;
+    }
 
-            const username = localStorage.getItem('username');
-            const userId = localStorage.getItem('userId'); // Retrieve the user ID from localStorage
+    const username = localStorage.getItem('username');
+    const userId = localStorage.getItem('userId'); // Retrieve the user ID from localStorage
 
-            if (!username || !userId) {
-                alert('Please log in to place an order.');
-                return;
-            }
+    if (!username || !userId) {
+        alert('Please log in to place an order.');
+        return;
+    }
 
-            const order = {
-                KullanıcıId: userId, 
-                ToplamTutar: total
-            };
+    // Create the order details based on the cart items
+    const orderDetails = cart.map(item => ({
+        siparişDetayId: 0, // This will be set by the server
+        siparişId: 0,      // This will be set by the server
+        ürünId: item.productId,
+        miktar: item.quantity,
+        fiyat: item.price
+    }));
 
-            fetch('http://localhost:5163/api/Orders', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(order)
-            })
-            .then(response => {
-                if (response.ok) {
-                    clearCart();
-                    alert('Order placed successfully!');
-                } else {
-                    alert('Failed to place order.');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('Error placing order.');
-            });
+    // Create the order request object
+    const orderRequest = {
+        order: {
+            siparişId: 0,         // This will be set by the server
+            kullanıcıId: userId,
+            toplamTutar: total,
+            siparişTarihi: new Date().toISOString() // Current date and time
+        },
+        orderDetails: orderDetails
+    };
+
+    // Send the order request to the server
+    fetch('http://localhost:5163/api/Orders', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(orderRequest)
+    })
+    .then(response => {
+        if (response.ok) {
+            clearCart();
+            alert('Order placed successfully!');
+        } else {
+            alert('Failed to place order.');
         }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Error placing order.');
+    });
+}
 
         window.onload = loadCart;
     </script>

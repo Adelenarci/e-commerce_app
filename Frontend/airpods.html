@@ -5,14 +5,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AirPods - My E-Commerce Store</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const username = localStorage.getItem('username');
+            const userIcon = document.getElementById('user-icon');
+            const loginButton = document.getElementById('login-button');
+            const logoutButton = document.getElementById('logout-button');
+
+            if (username) {
+                userIcon.innerHTML = `<i class="fa fa-user"></i> ${username}`;
+                userIcon.style.cursor = 'pointer';
+                userIcon.onclick = function() { window.location.href = 'user-orders.html'; };
+                loginButton.style.display = 'none';
+                logoutButton.style.display = 'inline-block';
+            } else {
+                userIcon.innerHTML = `<i class="fa fa-user"></i>`;
+                userIcon.style.cursor = 'default';
+                userIcon.onclick = null;
+                loginButton.style.display = 'inline-block';
+                logoutButton.style.display = 'none';
+            }
+
+            logoutButton.addEventListener('click', async function() {
+                const response = await fetch('http://localhost:5163/api/Users/logout', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'}
+                });
+                if (response.ok) {
+                    localStorage.removeItem('username');
+                    localStorage.removeItem('userId');
+                    window.location.href = 'user-login.html';
+                } else {
+                    console.error('Logout failed');
+                }
+            });
+        });
+
         function addToCart() {
-            const productName = document.getElementById('product-name').innerText;
-            const price = parseFloat(document.getElementById('product-price').innerText.replace('$', ''));
+            const product = {
+                ÜrünId: 4,
+                İsim: document.getElementById('product-name').innerText,
+                Fiyat: parseFloat(document.getElementById('product-price').innerText.replace('$', ''))
+            };
+
             const cart = JSON.parse(localStorage.getItem('cart')) || [];
-            cart.push({ productName, price });
+            const cartItem = {
+                productId: product.ÜrünId,
+                productName: product.İsim,
+                price: product.Fiyat,
+                quantity: 1
+            };
+
+            const existingItemIndex = cart.findIndex(item => item.productId === cartItem.productId);
+            if (existingItemIndex !== -1) {
+                cart[existingItemIndex].quantity += 1;
+            } else {
+                cart.push(cartItem);
+            }
+
             localStorage.setItem('cart', JSON.stringify(cart));
-            alert(`${productName} has been added to your cart.`);
+            alert(`${cartItem.productName} has been added to your cart.`);
         }
     </script>
 </head>
@@ -23,6 +76,13 @@
             <a href="index.html">Home</a>
             <a href="products.html">Products</a>
             <a href="cart.html">Cart</a>
+            <button id="login-button" class="btn" onclick="window.location.href='user-login.html'">
+                <i class="fa fa-sign-in-alt"></i> Login
+            </button>
+            <button id="logout-button" class="btn" style="display: none;">
+                <i class="fa fa-sign-out-alt"></i> Logout
+            </button>
+            <span id="user-icon" class="user-icon" style="display: inline-block;"></span>
         </nav>
     </header>
     <main>

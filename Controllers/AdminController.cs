@@ -17,6 +17,18 @@ namespace E_Ticaret_Uygulaması.Controllers
             _context = context;
         }
 
+        // GET last product (GET /api/Admin/products/last)
+[HttpGet("products/last")]
+public async Task<ActionResult<Product>> GetLastProduct()
+{
+    var lastProduct = await _context.Products.OrderByDescending(p => p.ÜrünId).FirstOrDefaultAsync();
+    if (lastProduct == null)
+    {
+        return NotFound("No products found.");
+    }
+    return lastProduct;
+}
+
         // Ürün Ekleme (POST /api/Admin/products)
         [HttpPost("products")]
         public async Task<ActionResult<Product>> AddProduct(Product product)
@@ -39,6 +51,13 @@ namespace E_Ticaret_Uygulaması.Controllers
                 return StatusCode(500, "Internal server error");
             }
         }
+
+        // Admin Logout (POST /api/Admin/logout)
+        [HttpPost("logout")]
+          public IActionResult LogoutAdmin()
+            {
+            return Ok(new { success = true, message = "Logged out successfully" });
+            }           
 
         // Ürün Düzenleme (PUT /api/Admin/products/{id})
         [HttpPut("products/{id}")]
@@ -69,6 +88,28 @@ namespace E_Ticaret_Uygulaması.Controllers
 
             return NoContent();
         }
+
+        // Admin Login (POST /api/Admin/login)
+        [HttpPost("login")]
+        public IActionResult LoginAdmin([FromBody] User model)
+        {
+            // Find the user by username
+            var user = _context.Users.SingleOrDefault(u => u.KullanıcıAdı == model.KullanıcıAdı);
+            if (user == null || user.Rol != "Admin")
+            {
+                return BadRequest(new { success = false, message = "Invalid username or password or not authorized" });
+            }
+
+            // Verify the password (plain text comparison)
+            if (user.Şifre != model.Şifre)
+            {
+                return BadRequest(new { success = false, message = "Invalid username or password" });
+            }
+
+            // Return success along with the KullanıcıId
+            return Ok(new { success = true, role = user.Rol, username = user.KullanıcıAdı, userId = user.KullanıcıId });
+        }
+
 
         // Ürün Silme (DELETE /api/Admin/products/{id})
         [HttpDelete("products/{id}")]

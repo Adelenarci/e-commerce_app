@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
 // Add services to the container.
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -11,6 +10,7 @@ builder.Services.AddSwaggerGen();
 // Add services for controllers
 builder.Services.AddControllers();
 
+// Configure CORS to allow all origins
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAllOrigins",
@@ -21,7 +21,6 @@ builder.Services.AddCors(options =>
                    .AllowAnyHeader();
         });
 });
-
 
 // Add ApplicationDbContext to DI container
 builder.Services.AddDbContext<SmartprodatabaseContext>(options =>
@@ -41,9 +40,9 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseCors("AllowAllOrigins");
+
 // Map controllers to endpoints
 app.MapControllers();
-
-app.UseCors("AllowAllOrigins");
 
 app.Run();

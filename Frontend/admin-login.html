@@ -6,31 +6,33 @@
     <title>Admin Login - My E-Commerce Store</title>
     <link rel="stylesheet" href="styles.css">
     <script>
-        function loginAdmin(event) {
-            event.preventDefault();
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
+    function loginAdmin(event) {
+    event.preventDefault();
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
 
-            // Call API for admin authentication (for now, it's left empty)
-            fetch('/api/admin-login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ username, password })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    localStorage.setItem('username', username); // Store username
-                    localStorage.setItem('role', 'Admin'); // Store admin role
-                    window.location.href = 'admin-dashboard.html'; // Redirect to the admin dashboard
-                } else {
-                    document.getElementById('loginError').innerText = 'Invalid username or password';
-                }
-            })
-            .catch(error => console.error('Error:', error));
+    fetch('http://localhost:5163/api/Admin/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ KullanıcıAdı: username, Şifre: password })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success && data.role === "Admin") {
+            localStorage.setItem('username', username); // Store username
+            localStorage.setItem('userId', data.userId); // Store user ID
+            window.location.href = 'admin-page.html'; // Redirect to admin dashboard
+        } else {
+            document.getElementById('loginError').innerText = 'Invalid username or password or not authorized';
         }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        document.getElementById('loginError').innerText = 'Server error or invalid credentials';
+    });
+}
     </script>
 </head>
 <body>

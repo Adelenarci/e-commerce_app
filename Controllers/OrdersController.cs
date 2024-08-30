@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using E_Ticaret_Uygulaması.Models;
 
@@ -17,9 +18,14 @@ namespace E_Ticaret_Uygulaması.Controllers
         {
             _context = context;
         }
+        public class OrderRequest
+        {
+        public Order Order { get; set; }
+        public List<OrderDetail> OrderDetails { get; set; }
+        }
 
         // GET: api/Orders
-        // Tüm siparişleri listele
+        // List all orders
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Order>>> GetOrders()
         {
@@ -35,7 +41,7 @@ namespace E_Ticaret_Uygulaması.Controllers
         }
 
         // GET: api/Orders/5
-        // Belirli bir siparişi ID'sine göre getir
+        // Get a specific order by ID
         [HttpGet("{id}")]
         public async Task<ActionResult<Order>> GetOrder(int id)
         {
@@ -49,38 +55,65 @@ namespace E_Ticaret_Uygulaması.Controllers
             return order;
         }
 
-        // POST: api/Orders
-        // Yeni bir sipariş oluştur
-        [HttpPost]
-        public async Task<ActionResult<Order>> PostOrder(Order order)
+        // GET: api/Orders/GetOrderDetails/5
+        // Get order details by Order ID
+        [HttpGet("GetOrderDetails/{orderId}")]
+        public async Task<ActionResult<IEnumerable<OrderDetail>>> GetOrderDetails(int orderId)
         {
-            // Generate a unique random order ID
-            Random rnd = new Random();
-            int newOrderId;
-            do
+            var orderDetails = await _context.OrderDetails
+                                              .Where(od => od.SiparişId == orderId)
+                                              .ToListAsync();
+
+            if (orderDetails == null || orderDetails.Count == 0)
             {
-                newOrderId = rnd.Next(1000, 9999);
-            } while (_context.Orders.Any(o => o.SiparişId == newOrderId));
-
-            order.SiparişId = newOrderId;
-
-            // Set the order date to the current date and time
-            order.SiparişTarihi = DateTime.Now;
-
-            // Ensure the total amount is provided by the client (e.g., from cart.html)
-            if (order.ToplamTutar == null)
-            {
-                return BadRequest("Total amount is required.");
+                return NotFound("No details found for this order.");
             }
 
-            _context.Orders.Add(order);
-            await _context.SaveChangesAsync();
+            return Ok(orderDetails);
+        }
 
-            return CreatedAtAction(nameof(GetOrder), new { id = order.SiparişId }, order);
+        // POST: api/Orders
+        // Create a new order along with order details
+        [HttpPost]
+        public async Task<ActionResult<Order>> PostOrder([FromBody] OrderRequest orderRequest)
+        {
+        // Extract the order and order details from the request object
+        var order = orderRequest.Order;
+        var orderDetails = orderRequest.OrderDetails;
+
+        // Generate a unique random order ID
+        Random rnd = new Random();
+        int newOrderId;
+        do
+        {
+        newOrderId = rnd.Next(1000, 9999);
+         } while (_context.Orders.Any(o => o.SiparişId == newOrderId));
+
+        order.SiparişId = newOrderId;
+        order.SiparişTarihi = DateTime.Now;
+
+        if (order.ToplamTutar == null)
+        {
+        return BadRequest("Total amount is required.");
+        }
+
+        _context.Orders.Add(order);
+        await _context.SaveChangesAsync();
+
+        // Now save the order details
+        foreach (var detail in orderDetails)
+        {
+        detail.SiparişId = newOrderId;
+        _context.OrderDetails.Add(detail);
+         }
+
+        await _context.SaveChangesAsync();
+
+        return CreatedAtAction(nameof(GetOrder), new { id = order.SiparişId }, order);
         }
 
         // DELETE: api/Orders/5
-        // Mevcut bir siparişi sil
+        // Delete an existing order
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteOrder(int id)
         {
@@ -90,6 +123,9 @@ namespace E_Ticaret_Uygulaması.Controllers
                 return NotFound();
             }
 
+            var orderDetails = await _context.OrderDetails.Where(od => od.SiparişId == id).ToListAsync();
+
+            _context.OrderDetails.RemoveRange(orderDetails);
             _context.Orders.Remove(order);
             await _context.SaveChangesAsync();
 
