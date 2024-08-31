@@ -5,10 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cart - My E-Commerce Store</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            setupUserInterface();
+            loadCart();
+        });
+
+        function setupUserInterface() {
             const username = localStorage.getItem('username');
-        
             const loginButton = document.getElementById('login-button');
             const logoutButton = document.getElementById('logout-button');
             const userIcon = document.getElementById('user-icon');
@@ -17,64 +22,59 @@
                 userIcon.innerHTML = `<i class="fa fa-user"></i> ${username}`;
                 loginButton.style.display = 'none';
                 logoutButton.style.display = 'inline-block';
-                userIcon.style.cursor = 'pointer'; // Make the icon look clickable
-                userIcon.onclick = function() { window.location.href = 'user-page.html'; }; // Redirect to user page on click
+                userIcon.onclick = function() { window.location.href = 'user-page.html'; };
             } else {
                 userIcon.innerHTML = `<i class="fa fa-user"></i>`;
                 loginButton.style.display = 'inline-block';
                 logoutButton.style.display = 'none';
-                userIcon.style.cursor = 'default'; // Default cursor when not logged in
-                userIcon.onclick = null; // Remove any previous click events
+                userIcon.onclick = null;
             }
         
-            // Handle logout
             logoutButton.addEventListener('click', async function() {
-                try {
-                    const response = await fetch('http://localhost:5163/api/Users/logout', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        }
-                    });
-        
-                    if (response.ok) {
-                        localStorage.removeItem('username');
-                        localStorage.removeItem('userId');
-                        window.location.href = 'index.html'; // Redirect to home page for a fresh session start
-                    } else {
-                        console.error('Logout failed');
-                        alert('Failed to log out. Please try again.');
-                    }
-                } catch (error) {
-                    console.error('Error during logout:', error);
-                    alert('An error occurred during logout. Please check your network connection.');
+                const response = await fetch('http://localhost:5163/api/Users/logout', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'}
+                });
+                if (response.ok) {
+                    localStorage.removeItem('username');
+                    localStorage.removeItem('userId');
+                    window.location.href = 'index.html';
+                } else {
+                    alert('Failed to log out. Please try again.');
                 }
             });
-        });
-        </script>
-    <script>
-        function loadCart() {
-            const cart = JSON.parse(localStorage.getItem('cart')) || [];
-            const cartContainer = document.getElementById('cart-items');
-            let total = 0;
-            cartContainer.innerHTML = '';
-
-            cart.forEach((item, index) => {
-                const itemElement = document.createElement('div');
-                itemElement.className = 'cart-item';
-                itemElement.innerHTML = `
-                    <p>${item.productName} - $${item.price.toFixed(2)}</p>
-                    <button onclick="removeFromCart(${index})" class="btn">Remove</button>
-                `;
-                cartContainer.appendChild(itemElement);
-                total += item.price;
-            });
-
-            document.getElementById('total').innerText = total.toFixed(2);
         }
 
+        function loadCart() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    console.log("Cart items loaded:", cart);
+
+    const cartContainer = document.getElementById('cart-items');
+    cartContainer.innerHTML = ''; 
+    let total = 0;
+
+    if (cart.length === 0) {
+        cartContainer.innerHTML = '<p>Your cart is empty</p>';
+    } else {
+        cart.forEach((item, index) => {
+            console.log("Rendering item:", item); 
+
+            const itemElement = document.createElement('div');
+            itemElement.className = 'cart-item';
+            itemElement.innerHTML = `
+                <p>${item.productName} - $${item.price.toFixed(2)} (Quantity: ${item.quantity})</p>
+                <button onclick="removeFromCart(${index})" class="btn">Remove</button>
+            `;
+            cartContainer.appendChild(itemElement);
+            total += item.price * item.quantity;
+        });
+    }
+
+    document.getElementById('total').innerText = total.toFixed(2);
+}
+
         function removeFromCart(index) {
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
             cart.splice(index, 1);
             localStorage.setItem('cart', JSON.stringify(cart));
             loadCart();
@@ -85,66 +85,56 @@
             loadCart();
         }
 
-    function checkout() {
+        async function checkout() {
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    const total = parseFloat(document.getElementById('total').innerText);
-
     if (cart.length === 0) {
         alert('Your cart is empty.');
         return;
     }
 
-    const username = localStorage.getItem('username');
-    const userId = localStorage.getItem('userId'); // Retrieve the user ID from localStorage
-
-    if (!username || !userId) {
+    const userId = localStorage.getItem('userId');
+    if (!userId) {
         alert('Please log in to place an order.');
         return;
     }
 
-    // Create the order details based on the cart items
     const orderDetails = cart.map(item => ({
-        siparişDetayId: 0, // This will be set by the server
-        siparişId: 0,      // This will be set by the server
         ürünId: item.productId,
         miktar: item.quantity,
         fiyat: item.price
     }));
 
-    // Create the order request object
     const orderRequest = {
         order: {
-            siparişId: 0,         // This will be set by the server
-            kullanıcıId: userId,
-            toplamTutar: total,
-            siparişTarihi: new Date().toISOString() // Current date and time
+            kullanıcıId: parseInt(userId),
+            toplamTutar: cart.reduce((total, item) => total + item.fiyat * item.miktar, 0),
+            siparişTarihi: new Date().toISOString()
         },
         orderDetails: orderDetails
     };
 
-    // Send the order request to the server
-    fetch('http://localhost:5163/api/Orders', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(orderRequest)
-    })
-    .then(response => {
+    try {
+        const response = await fetch('http://localhost:5163/api/Orders', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(orderRequest)
+        });
+
+        const data = await response.json(); // Always parse the response data
+        console.log("Response status:", response.status); // Log the response status
+        console.log("Response data:", data); // Log the parsed response data
+
         if (response.ok) {
             clearCart();
             alert('Order placed successfully!');
         } else {
-            alert('Failed to place order.');
+            alert(`Failed to place order: ${data.message || 'An unknown error occurred.'}`);
         }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('Error placing order.');
-    });
+    } catch (error) {
+        console.error('Error placing order:', error);
+        alert('An error occurred while placing your order. Please check your network connection.');
+    }
 }
-
-        window.onload = loadCart;
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
@@ -178,7 +168,7 @@
         </section>
     </main>
     <footer>
-        <p>&copy; 2024 AKK </p>
+        <p>&copy; 2024 AKK</p>
     </footer>
 </body>
 </html>

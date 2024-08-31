@@ -18,14 +18,14 @@ namespace E_Ticaret_Uygulaması.Controllers
         {
             _context = context;
         }
-        public class OrderRequest
+       public class OrderRequest
         {
-        public Order Order { get; set; }
-        public List<OrderDetail> OrderDetails { get; set; }
+         public Order Order { get; set; }
+         public List<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();     
         }
 
         // GET: api/Orders
-        // List all orders
+      
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Order>>> GetOrders()
         {
@@ -35,13 +35,10 @@ namespace E_Ticaret_Uygulaması.Controllers
             }
             catch (Exception ex)
             {
-                // Log the exception (ex) here as needed
-                return StatusCode(500, "Internal server error");
+                return BadRequest(ex.Message);
             }
         }
 
-        // GET: api/Orders/5
-        // Get a specific order by ID
         [HttpGet("{id}")]
         public async Task<ActionResult<Order>> GetOrder(int id)
         {
@@ -56,7 +53,7 @@ namespace E_Ticaret_Uygulaması.Controllers
         }
 
         // GET: api/Orders/GetOrderDetails/5
-        // Get order details by Order ID
+       
         [HttpGet("GetOrderDetails/{orderId}")]
         public async Task<ActionResult<IEnumerable<OrderDetail>>> GetOrderDetails(int orderId)
         {
@@ -69,50 +66,53 @@ namespace E_Ticaret_Uygulaması.Controllers
                 return NotFound("No details found for this order.");
             }
 
-            return Ok(orderDetails);
+            return Ok(orderDetails);    
         }
 
-        // POST: api/Orders
-        // Create a new order along with order details
-        [HttpPost]
-        public async Task<ActionResult<Order>> PostOrder([FromBody] OrderRequest orderRequest)
-        {
-        // Extract the order and order details from the request object
-        var order = orderRequest.Order;
-        var orderDetails = orderRequest.OrderDetails;
 
-        // Generate a unique random order ID
-        Random rnd = new Random();
-        int newOrderId;
-        do
-        {
+// POST: api/Orders
+[HttpPost]
+public async Task<ActionResult<Order>> PostOrder([FromBody] OrderRequest orderRequest)
+{
+    var order = orderRequest.Order;
+    var orderDetails = orderRequest.OrderDetails;
+
+   
+    Random rnd = new Random();
+    int newOrderId;
+    do
+    {
         newOrderId = rnd.Next(1000, 9999);
-         } while (_context.Orders.Any(o => o.SiparişId == newOrderId));
+    } while (_context.Orders.Any(o => o.SiparişId == newOrderId));
 
-        order.SiparişId = newOrderId;
-        order.SiparişTarihi = DateTime.Now;
+    order.SiparişId = newOrderId;
+    order.SiparişTarihi = DateTime.Now;
 
-        if (order.ToplamTutar == null)
-        {
+    if (order.ToplamTutar == null)
+    {
         return BadRequest("Total amount is required.");
-        }
+    }
 
-        _context.Orders.Add(order);
-        await _context.SaveChangesAsync();
+    _context.Orders.Add(order);
+    await _context.SaveChangesAsync();
 
-        // Now save the order details
-        foreach (var detail in orderDetails)
-        {
+   
+    int maxDetailId = await _context.OrderDetails.MaxAsync(d => (int?)d.SiparişDetayId) ?? 0;
+    int nextDetailId = maxDetailId + 1;
+
+   
+    foreach (var detail in orderDetails)
+    {
+        detail.SiparişDetayId = nextDetailId++;
         detail.SiparişId = newOrderId;
         _context.OrderDetails.Add(detail);
-         }
+    }
 
-        await _context.SaveChangesAsync();
+    await _context.SaveChangesAsync();
 
-        return CreatedAtAction(nameof(GetOrder), new { id = order.SiparişId }, order);
-        }
-
-        // DELETE: api/Orders/5
+    return CreatedAtAction(nameof(GetOrder), new { id = order.SiparişId }, order);
+}
+        
         // Delete an existing order
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteOrder(int id)

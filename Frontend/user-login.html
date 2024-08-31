@@ -28,13 +28,13 @@
     .then(data => {
         console.log("Response data:", data);
         if (data.success) {
-            // After successful login, fetch the KullanıcıId from the backend
+         
             fetch(`http://localhost:5163/api/Users/GetUserByUsername/${username}`)
                 .then(response => response.json())
                 .then(userData => {
-                    // Store both the username and the user ID in localStorage
+                   
                     localStorage.setItem('username', username);
-                    localStorage.setItem('userId', userData.KullanıcıId); // Assuming the API returns KullanıcıId
+                    localStorage.setItem('userId', userData.KullanıcıId); 
                     window.location.href = 'index.html';
                 })
                 .catch(error => {
@@ -57,7 +57,7 @@
             const password = document.getElementById('register-password').value;
             const email = document.getElementById('register-email').value;
 
-            // Call API to register a new user
+        
             fetch('http://localhost:5163/api/Users/register', {
                 method: 'POST',
                 headers: {
@@ -92,7 +92,7 @@
 <body>
     <header>
         <h1>User Login</h1>
-        <!-- Navigation bar -->
+       
         <nav>
             <a href="index.html">Home</a>
             <a href="products.html">Products</a>
@@ -101,7 +101,7 @@
     </header>
     <main>
         <section class="login">
-            <!-- Login Form -->
+         
             <div id="loginForm">
                 <h2>Login</h2>
                 <form onsubmit="loginUser(event)">
@@ -116,7 +116,6 @@
                 <p><a href="admin-login.html" class="btn-small">Admin Login</a></p>
             </div>
 
-            <!-- Registration Form -->
             <div id="registerForm" style="display: none;">
                 <h2>Create Account</h2>
                 <form onsubmit="createUser(event)">

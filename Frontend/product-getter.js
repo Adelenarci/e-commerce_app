@@ -8,7 +8,7 @@ function fetchProducts() {
     .then(response => response.json())
     .then(products => {
         const productList = document.getElementById('productList');
-        productList.innerHTML = ''; // Clear existing products before loading new ones
+        productList.innerHTML = ''; 
         products.forEach(product => {
             const productElement = document.createElement('div');
             productElement.className = 'product-item';
@@ -23,7 +23,7 @@ function fetchProducts() {
         });
     })
     .catch(error => {
-        console.error('Failed to fetch products:', error); // Log fetch errors
+        console.error('Failed to fetch products:', error); 
     });
 }
 function navigateToProductDetail(ürünId) {

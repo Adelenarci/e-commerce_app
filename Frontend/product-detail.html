@@ -17,14 +17,14 @@
                 userIcon.innerHTML = `<i class="fa fa-user"></i> ${username}`;
                 loginButton.style.display = 'none';
                 logoutButton.style.display = 'inline-block';
-                userIcon.style.cursor = 'pointer'; // Make the icon look clickable
-                userIcon.onclick = function() { window.location.href = 'user-page.html'; }; // Redirect to user page on click
+                userIcon.style.cursor = 'pointer';
+                userIcon.onclick = function() { window.location.href = 'user-page.html'; }; 
             } else {
                 userIcon.innerHTML = `<i class="fa fa-user"></i>`;
                 loginButton.style.display = 'inline-block';
                 logoutButton.style.display = 'none';
-                userIcon.style.cursor = 'default'; // Default cursor when not logged in
-                userIcon.onclick = null; // Remove any previous click events
+                userIcon.style.cursor = 'default'; 
+                userIcon.onclick = null;
             }
         
             // Handle logout
@@ -40,7 +40,7 @@
                     if (response.ok) {
                         localStorage.removeItem('username');
                         localStorage.removeItem('userId');
-                        window.location.href = 'index.html'; // Redirect to home page for a fresh session start
+                        window.location.href = 'index.html'; 
                     } else {
                         console.error('Logout failed');
                         alert('Failed to log out. Please try again.');

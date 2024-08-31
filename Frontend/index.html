@@ -40,7 +40,7 @@
                     if (response.ok) {
                         localStorage.removeItem('username');
                         localStorage.removeItem('userId');
-                        window.location.href = 'index.html'; // Redirect to home page for a fresh session start
+                        window.location.href = 'index.html'; 
                     } else {
                         console.error('Logout failed');
                         alert('Failed to log out. Please try again.');

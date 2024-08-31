@@ -18,7 +18,7 @@ namespace E_Ticaret_Uygulaması.Controllers
             _context = context;
         }
 
-        // GET: api/Products
+      
         // Tüm ürünleri listele
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
@@ -29,12 +29,12 @@ namespace E_Ticaret_Uygulaması.Controllers
             }
             catch (Exception ex)
             {
-                // Log the exception (ex) here as needed
+                
                 return StatusCode(500, "Internal server error");
             }
         }
 
-        // GET: api/Products/5
+   
         // Belirli bir ürünü ID'sine göre getir
         [HttpGet("{id}")]
         public async Task<ActionResult<Product>> GetProduct(int id)
@@ -49,7 +49,7 @@ namespace E_Ticaret_Uygulaması.Controllers
             return product;
         }
 
-        // GET: api/Products/search?name=productName
+       
         // Ürün arama (isim ile)
         [HttpGet("search")]
         public async Task<ActionResult<IEnumerable<Product>>> SearchProducts(string name)

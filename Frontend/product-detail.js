@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const queryParams = new URLSearchParams(window.location.search);
-    const productId = queryParams.get('ürünId'); // Assume the URL is like ?ürünId=123
+    const productId = queryParams.get('ürünId'); 
 
     if (productId) {
         fetch(`http://localhost:5163/api/Products/${productId}`)
@@ -13,9 +13,9 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('product-image').src = `/Users/akk/Desktop/Code/e-commerce_app/Frontend/Assets/product ${productId}.webp`;
             document.getElementById('product-image').alt = product.İsim;
 
-            // Attach the addToCart function to the button with the correct product data
+           
             document.getElementById('add-to-cart-button').onclick = function() {
-                addToCart(product); // Pass the product object to addToCart
+                addToCart(product); 
             };
         })
         .catch(error => {
@@ -27,26 +27,19 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 function addToCart(product) {
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const existingItemIndex = cart.findIndex(item => item.productId === product.ÜrünId);
 
-    // Create a cart item with all necessary properties
-    const cartItem = {
-        productId: product.ürünId,   // Use the product's ÜrünId
-        productName: product.İsim,   // Use the product's İsim
-        price: product.fiyat,        // Use the product's Fiyat
-        quantity: 1                  // Default to 1, can be modified later if needed
-    };
-
-    // Check if the product is already in the cart
-    const existingItemIndex = cart.findIndex(item => item.productId === cartItem.productId);
     if (existingItemIndex !== -1) {
-        // If the product is already in the cart, increase the quantity
         cart[existingItemIndex].quantity += 1;
     } else {
-        // If the product is not in the cart, add it
-        cart.push(cartItem);
+        cart.push({
+            productId: product.ÜrünId,
+            productName: product.İsim,
+            price: product.Fiyat,
+            quantity: 1
+        });
     }
 
-    // Save the updated cart back to localStorage
     localStorage.setItem('cart', JSON.stringify(cart));
-    alert(`${cartItem.productName} has been added to your cart.`);
+    alert(`${product.İsim} has been added to your cart.`);
 }

@@ -1,4 +1,4 @@
-/* General Styles */
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -8,7 +8,7 @@ body {
     box-sizing: border-box;
 }
 
-/* Header Styles */
+
 header {
     background-color: #333;
     color: #fff;
@@ -21,55 +21,53 @@ header nav a {
     color: #fff;
     margin: 0 1rem;
     text-decoration: none;
-    padding: 0.5rem 1rem; /* Padding for clickable area */
-    border-radius: 5px; /* Optional rounded corners */
+    padding: 0.5rem 1rem; 
+    border-radius: 5px; 
 }
 
 header nav a:hover {
-    background-color: #575757; /* Slight background on hover for better interaction */
+    background-color: #575757;
 }
 
-/* User Info Styles */
 .user-info {
     display: flex;
     align-items: center;
-    gap: 10px;  /* Space between elements */
+    gap: 10px;  
 }
 
-/* Sidebar Styles */
+
 .sidebar {
-    width: 200px; /* Fixed width for the sidebar */
+    width: 200px; 
     background: #535dee;
     padding: 20px;
-    height: calc(100vh - 4rem); /* Adjust height according to the header */
-    box-sizing: border-box; /* Include padding in height calculation */
+    height: calc(100vh - 4rem); 
+    box-sizing: border-box; 
     position: sticky;
-    top: 4rem; /* This ensures the sidebar stays below the header while scrolling */
+    top: 4rem; 
 }
 
 .main-wrapper {
-    display: flex; /* Use flexbox to align the sidebar and main content side by side */
-    height: calc(100vh - 2rem); /* Full height adjusted for header/footer */
+    display: flex; 
+    height: calc(100vh - 2rem); 
 }
 
-/* Content Section Styles */
 .content-section {
-    width: 100%; /* Full width inside the main content */
-    max-width: 600px; /* Optional: limit the max width of the content */
-    background: white; /* Optional: different background color */
+    width: 100%;
+    max-width: 600px; 
+    background: white; 
     padding: 20px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Optional: add some shadow for better visibility */
-    margin-top: 0; /* Ensure it starts right at the top of the content area */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
+    margin-top: 0;
 }
 
-/* Main Content Styles */
+
 .main-content {
-    flex-grow: 1; /* Take the remaining space next to the sidebar */
+    flex-grow: 1;
     padding: 20px;
-    box-sizing: border-box; /* Include padding in height calculation */
+    box-sizing: border-box; 
 }
 
-/* Footer Styles */
+
 footer {
     position: fixed;
     bottom: 0;

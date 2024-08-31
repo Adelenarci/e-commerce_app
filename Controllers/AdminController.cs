@@ -47,7 +47,7 @@ public async Task<ActionResult<Product>> GetLastProduct()
             }
             catch (Exception ex)
             {
-                // Log the exception (ex) here as needed
+                
                 return StatusCode(500, "Internal server error");
             }
         }
@@ -93,20 +93,18 @@ public async Task<ActionResult<Product>> GetLastProduct()
         [HttpPost("login")]
         public IActionResult LoginAdmin([FromBody] User model)
         {
-            // Find the user by username
+          
             var user = _context.Users.SingleOrDefault(u => u.KullanıcıAdı == model.KullanıcıAdı);
             if (user == null || user.Rol != "Admin")
             {
                 return BadRequest(new { success = false, message = "Invalid username or password or not authorized" });
             }
 
-            // Verify the password (plain text comparison)
             if (user.Şifre != model.Şifre)
             {
                 return BadRequest(new { success = false, message = "Invalid username or password" });
             }
 
-            // Return success along with the KullanıcıId
             return Ok(new { success = true, role = user.Rol, username = user.KullanıcıAdı, userId = user.KullanıcıId });
         }
 

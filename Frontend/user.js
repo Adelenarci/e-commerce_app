@@ -6,15 +6,15 @@ document.addEventListener('DOMContentLoaded', function() {
 function showSection(sectionId) {
     const sections = document.querySelectorAll('.content-section');
     sections.forEach(section => {
-        section.style.display = 'none'; // Hide all sections
+        section.style.display = 'none'; 
     });
 
     const activeSection = document.getElementById(`${sectionId}-section`);
     if (activeSection) {
-        activeSection.style.display = 'block'; // Show the selected section
+        activeSection.style.display = 'block'; 
     }
 
-    // Optionally, load data if the section is shown for the first time or needs to refresh
+   
     if (sectionId === 'orders') {
         loadOrders();
     } else if (sectionId === 'details') {
@@ -23,7 +23,7 @@ function showSection(sectionId) {
 }
 
 function loadOrders() {
-    // Placeholder for order loading function
+    
 }
 
 function loadUserDetails() {
@@ -47,10 +47,9 @@ function loadUserDetails() {
         return response.json();
     })
     .then(data => {
-        console.log("API response:", data);  // Check the structure here
-
+        console.log("API response:", data);  
         if (data) {
-            // Use the exact keys from the API response
+            
             const userDetailsHtml = `
                 <p><strong>User ID:</strong> ${data.kullanıcıId || ''}</p>
                 <p><strong>Username:</strong> ${data.kullanıcıAdı || ''}</p>

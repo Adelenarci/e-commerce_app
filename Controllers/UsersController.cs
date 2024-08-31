@@ -41,9 +41,9 @@ namespace E_Ticaret_Uygulaması.Controllers
             {
                 KullanıcıId = newUserId,
                 KullanıcıAdı = model.KullanıcıAdı,
-                Şifre = model.Şifre, // No encryption applied
+                Şifre = model.Şifre, 
                 Email = model.Email,
-                Rol = "User" // Set role as 'User'
+                Rol = "User"
             };
 
             // Save to the database
@@ -64,25 +64,24 @@ namespace E_Ticaret_Uygulaması.Controllers
                 return BadRequest(new { success = false, message = "Invalid username or password" });
             }
 
-            // Verify the password (plain text comparison)
+       
             if (user.Şifre != model.Şifre)
             {
                 return BadRequest(new { success = false, message = "Invalid username or password" });
             }
 
-            // Return success along with the KullanıcıId
+     
             return Ok(new { success = true, role = user.Rol, username = user.KullanıcıAdı, userId = user.KullanıcıId });
         }
 
-        // User logout (simple implementation)
+        // User logout 
         [HttpPost("logout")]
         public IActionResult LogoutUser()
         {
-            // Perform any necessary logout operations, like token invalidation
+           
             return Ok(new { success = true, message = "User logged out successfully" });
         }
 
-        // Get user by username (for additional flexibility)
         [HttpGet("GetUserByUsername/{username}")]
         public async Task<ActionResult<User>> GetUserByUsername(string username)
         {
