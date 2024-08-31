@@ -5,21 +5,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Products - My E-Commerce Store</title>
     <link rel="stylesheet" href="styles.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const username = localStorage.getItem('username');
+        
+            const loginButton = document.getElementById('login-button');
+            const logoutButton = document.getElementById('logout-button');
+            const userIcon = document.getElementById('user-icon');
+        
+            if (username) {
+                userIcon.innerHTML = `<i class="fa fa-user"></i> ${username}`;
+                loginButton.style.display = 'none';
+                logoutButton.style.display = 'inline-block';
+                userIcon.style.cursor = 'pointer'; // Make the icon look clickable
+                userIcon.onclick = function() { window.location.href = 'user-page.html'; }; // Redirect to user page on click
+            } else {
+                userIcon.innerHTML = `<i class="fa fa-user"></i>`;
+                loginButton.style.display = 'inline-block';
+                logoutButton.style.display = 'none';
+                userIcon.style.cursor = 'default'; // Default cursor when not logged in
+                userIcon.onclick = null; // Remove any previous click events
+            }
+        
+            // Handle logout
+            logoutButton.addEventListener('click', async function() {
+                try {
+                    const response = await fetch('http://localhost:5163/api/Users/logout', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    });
+        
+                    if (response.ok) {
+                        localStorage.removeItem('username');
+                        localStorage.removeItem('userId');
+                        window.location.href = 'index.html'; // Redirect to home page for a fresh session start
+                    } else {
+                        console.error('Logout failed');
+                        alert('Failed to log out. Please try again.');
+                    }
+                } catch (error) {
+                    console.error('Error during logout:', error);
+                    alert('An error occurred during logout. Please check your network connection.');
+                }
+            });
+        });
+        </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
 </head>
 <body>
-<header>
-    <h1>My E-Commerce Store</h1>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="products.html">Products</a>
-        <a href="cart.html">Cart</a>
-        <button id="login-button" class="btn">
-            <i class="fa fa-sign-in-alt"></i> Login
-        </button>
-        <span id="user-icon-span" style="display: none;"></span>
-    </nav>
-</header>
+    <header>
+        <h1>My E-Commerce Store</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="cart.html">Cart</a>
+            <button id="login-button" class="btn" onclick="window.location.href='user-login.html'">
+                <i class="fa fa-sign-in-alt"></i> Login
+            </button>
+            <button id="logout-button" class="btn" style="display: none;">
+                <i class="fa fa-sign-out-alt"></i> Logout
+            </button>
+            <span id="user-icon" class="user-icon">
+                <i class="fa fa-user"></i>
+            </span>
+        </nav>
+    </header>
 <main>
     <section class="products">
         <h2>Our Products</h2>
@@ -29,70 +81,8 @@
     </section>
 </main>
 <footer>
-    <p>&copy; 2024 My E-Commerce Store</p>
+    <p>&copy; 2024 AKK </p>
 </footer>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        fetchProducts();
-        setupLoginLogout();
-    });
-    
-    function fetchProducts() {
-        fetch('http://localhost:5163/api/Products')
-        .then(response => response.json())
-        .then(products => {
-            const productList = document.getElementById('productList');
-            productList.innerHTML = ''; // Clear existing products before loading new ones
-            products.forEach(product => {
-                const productFileName = formatProductNameToFileName(product.İsim);
-                const productElement = document.createElement('div');
-                productElement.className = 'product-item';
-                productElement.innerHTML = `
-                    <img src="Assets/${productFileName}.webp" alt="${product.İsim}">
-                    <h3>${product.İsim}</h3>
-                    <p>$${product.Fiyat.toFixed(2)}</p>
-                    <a href="${productFileName}.html" class="btn">View Details</a>
-                `;
-                productList.appendChild(productElement);
-            });
-        })
-        .catch(error => console.error('Failed to fetch products:', error));
-    }
-    
-    function formatProductNameToFileName(productName) {
-        // Converts 'MacBook Pro' into 'macbook-pro'
-        return productName.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9\-]/gi, '');
-    }
-    
-    function setupLoginLogout() {
-        const username = localStorage.getItem('username');
-        const loginButton = document.getElementById('login-button');
-        const userIconSpan = document.getElementById('user-icon-span');
-    
-        if (username) {
-            userIconSpan.innerHTML = `<i class="fa fa-user"></i> ${username}`;
-            userIconSpan.style.display = 'inline';
-            userIconSpan.onclick = function() { window.location.href = 'user-orders.html'; };
-    
-            const logoutButton = document.createElement('button');
-            logoutButton.textContent = 'Logout';
-            logoutButton.className = 'btn';
-            logoutButton.onclick = function() {
-                localStorage.removeItem('username');
-                localStorage.removeItem('userId');
-                window.location.reload();
-            };
-    
-            if (loginButton) {
-                loginButton.style.display = 'none';
-            }
-            document.querySelector('nav').appendChild(logoutButton);
-        } else {
-            loginButton.style.display = 'inline';
-            loginButton.onclick = function() { window.location.href = 'user-login.html'; };
-            userIconSpan.style.display = 'none';
-        }
-    }
-    </script>
+<script src="product-getter.js"></script>
 </body>
 </html>

@@ -8,46 +8,50 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const username = localStorage.getItem('username');
-
+        
             const loginButton = document.getElementById('login-button');
             const logoutButton = document.getElementById('logout-button');
             const userIcon = document.getElementById('user-icon');
-
+        
             if (username) {
                 userIcon.innerHTML = `<i class="fa fa-user"></i> ${username}`;
                 loginButton.style.display = 'none';
                 logoutButton.style.display = 'inline-block';
+                userIcon.style.cursor = 'pointer'; // Make the icon look clickable
+                userIcon.onclick = function() { window.location.href = 'user-page.html'; }; // Redirect to user page on click
             } else {
+                userIcon.innerHTML = `<i class="fa fa-user"></i>`;
                 loginButton.style.display = 'inline-block';
                 logoutButton.style.display = 'none';
+                userIcon.style.cursor = 'default'; // Default cursor when not logged in
+                userIcon.onclick = null; // Remove any previous click events
             }
-
+        
             // Handle logout
             logoutButton.addEventListener('click', async function() {
-    try {
-        const response = await fetch('http://localhost:5163/api/Users/logout', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            }
+                try {
+                    const response = await fetch('http://localhost:5163/api/Users/logout', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    });
+        
+                    if (response.ok) {
+                        localStorage.removeItem('username');
+                        localStorage.removeItem('userId');
+                        window.location.href = 'index.html'; // Redirect to home page for a fresh session start
+                    } else {
+                        console.error('Logout failed');
+                        alert('Failed to log out. Please try again.');
+                    }
+                } catch (error) {
+                    console.error('Error during logout:', error);
+                    alert('An error occurred during logout. Please check your network connection.');
+                }
+            });
         });
-
-        if (response.ok) {
-            // Assuming logout is always successful from the server-side
-            localStorage.removeItem('username');
-            localStorage.removeItem('userId');
-            window.location.href = 'index.html'; // Redirect to login for a fresh session start
-        } else {
-            console.error('Logout failed');
-            alert('Failed to log out. Please try again.');
-        }
-    } catch (error) {
-        console.error('Error during logout:', error);
-        alert('An error occurred during logout. Please check your network connection.');
-    }
-});
-        });
-    </script>
+        </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
@@ -77,7 +81,7 @@
         </section>
     </main>
     <footer>
-        <p>&copy; 2024 My E-Commerce Store</p>
+        <p>&copy; 2024 AKK </p>
     </footer>
 </body>
 </html>

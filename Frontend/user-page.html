@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard - My E-Commerce Store</title>
+    <link rel="stylesheet" href="user-page.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome, <span id="username">User</span>!</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="cart.html">Cart</a>
+        </nav>
+    </header>
+
+    <div class="main-wrapper"> <!-- Add this wrapper div -->
+        <div class="sidebar">
+            <button onclick="showSection('orders')" aria-controls="orders-section">Your Orders</button>
+            <button onclick="showSection('details')" aria-controls="details-section">Your Details</button>
+        </div>
+        
+        <main id="main-content" class="main-content">
+            <section id="orders-section" class="content-section" style="display: none;">
+                <h2>Your Orders</h2>
+                <div id="orders-container">Loading orders...</div>
+            </section>
+            <section id="details-section" class="content-section" style="display: none;">
+                <h2>Your Details</h2>
+                <div id="details-container">Loading details...</div>
+            </section>
+        </main>
+    </div> 
+
+    <footer>
+        <p>&copy; 2024 AKK</p>
+    </footer>
+
+    <script src="user.js"></script>
+</body>
+</html>

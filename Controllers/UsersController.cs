@@ -93,7 +93,7 @@ namespace E_Ticaret_Uygulaması.Controllers
                 return NotFound("User not found");
             }
 
-            return Ok(new { user.KullanıcıId, user.KullanıcıAdı });
+            return Ok(new { user.KullanıcıId, user.KullanıcıAdı, user.Email });
         }
     }
 }

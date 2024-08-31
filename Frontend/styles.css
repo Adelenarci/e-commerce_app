@@ -4,6 +4,7 @@ body {
     padding: 0;
     background-color: #f4f4f4;
     color: #333;
+    box-sizing: border-box;
 }
 
 header {
@@ -17,18 +18,24 @@ header nav a {
     color: #fff;
     margin: 0 1rem;
     text-decoration: none;
+    padding: 0.5rem 1rem; /* Padding for clickable area */
+    border-radius: 5px; /* Optional rounded corners */
+}
+
+header nav a:hover {
+    background-color: #575757; /* Slight background on hover for better interaction */
 }
 
 main {
-    padding: 2rem;
+    padding: 1rem;
 }
 
 .hero {
     background-color: #007BFF;
     color: #fff;
-    padding: 2rem;
+    padding: 1rem;
     text-align: center;
-    position: relative; /* Allows for absolute positioning of the button */
+    position: relative;
 }
 
 .hero .btn {
@@ -86,7 +93,7 @@ main {
 .product-details img {
     max-width: 50%;
     height: auto;
-    border-radius: 5px;
+    border-radius: 1px;
 }
 
 .product-details .details {
@@ -96,7 +103,7 @@ main {
 .product-details .btn {
     background-color: #28a745;
     color: #fff;
-    padding: 1rem 2rem;
+    
     text-decoration: none;
     border-radius: 5px;
 }

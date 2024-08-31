@@ -1,0 +1,81 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    box-sizing: border-box;
+}
+
+/* Header Styles */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+}
+
+
+header nav a {
+    color: #fff;
+    margin: 0 1rem;
+    text-decoration: none;
+    padding: 0.5rem 1rem; /* Padding for clickable area */
+    border-radius: 5px; /* Optional rounded corners */
+}
+
+header nav a:hover {
+    background-color: #575757; /* Slight background on hover for better interaction */
+}
+
+/* User Info Styles */
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;  /* Space between elements */
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 200px; /* Fixed width for the sidebar */
+    background: #535dee;
+    padding: 20px;
+    height: calc(100vh - 4rem); /* Adjust height according to the header */
+    box-sizing: border-box; /* Include padding in height calculation */
+    position: sticky;
+    top: 4rem; /* This ensures the sidebar stays below the header while scrolling */
+}
+
+.main-wrapper {
+    display: flex; /* Use flexbox to align the sidebar and main content side by side */
+    height: calc(100vh - 2rem); /* Full height adjusted for header/footer */
+}
+
+/* Content Section Styles */
+.content-section {
+    width: 100%; /* Full width inside the main content */
+    max-width: 600px; /* Optional: limit the max width of the content */
+    background: white; /* Optional: different background color */
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Optional: add some shadow for better visibility */
+    margin-top: 0; /* Ensure it starts right at the top of the content area */
+}
+
+/* Main Content Styles */
+.main-content {
+    flex-grow: 1; /* Take the remaining space next to the sidebar */
+    padding: 20px;
+    box-sizing: border-box; /* Include padding in height calculation */
+}
+
+/* Footer Styles */
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+}
